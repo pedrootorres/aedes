@@ -4,6 +4,8 @@ var increment = 6;
 var increment2 = 18;
 var score = 0;
 var value = 0;
+var allMosquitos = 0;
+var playerStatus = document.getElementById("disease");
 
 function addMosquito() {
 	var x = Math.floor(Math.random() * 50);
@@ -44,7 +46,25 @@ function startGame() {
 		interval = setInterval(startGame, frequency);
 	}
 
-	console.log("frequency:" + frequency + ", checkpoint:" + checkpoint);
+	allMosquitos = document.getElementsByClassName("aedes").length;
+
+	if(allMosquitos > 100) {
+		// game over
+	} else if(allMosquitos > 80) {
+		playerStatus.setAttribute('class', 'chikungunya');
+		playerStatus.textContent = "CHIKUNGUNYA";
+	} else if(allMosquitos > 40) {
+		playerStatus.setAttribute('class', 'zika');
+		playerStatus.textContent = "ZIKA";
+	} else if(allMosquitos > 20) {
+		playerStatus.setAttribute('class', 'dengue');
+		playerStatus.textContent = "DENGUE";
+	} else {
+		playerStatus.setAttribute('class', 'nada');
+		playerStatus.textContent = "NADA";
+	}
+
+	// console.log("frequency:" + frequency + ", checkpoint:" + checkpoint);
 }
 
 var interval = setInterval(startGame, frequency);
