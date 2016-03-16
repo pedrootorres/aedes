@@ -49,7 +49,9 @@ function startGame() {
 	allMosquitos = document.getElementsByClassName("aedes").length;
 
 	if(allMosquitos > 100) {
-		// game over
+		clearInterval(interval);
+		document.getElementById("finalScore").textContent = document.getElementById("score").textContent;
+		document.getElementById("over").style.visibility = "visible";
 	} else if(allMosquitos > 80) {
 		playerStatus.setAttribute('class', 'chikungunya');
 		playerStatus.textContent = "CHIKUNGUNYA";
@@ -68,3 +70,26 @@ function startGame() {
 }
 
 var interval = setInterval(startGame, frequency);
+
+function restart() {
+	document.getElementById("over").style.visibility = "hidden";
+	document.getElementById("score").textContent = "0";
+	playerStatus.setAttribute('class', 'nada');
+	playerStatus.textContent = "NADA";
+
+	allMosquitos = document.getElementById('gameZone');
+
+	while(allMosquitos.firstChild) {
+		allMosquitos.removeChild(allMosquitos.firstChild);
+	}
+
+	frequency = 2000;
+	checkpoint = 10;
+	increment = 6;
+	increment2 = 18;
+	score = 0;
+	value = 0;
+	allMosquitos = 0;
+
+	interval = setInterval(startGame, frequency);			
+}

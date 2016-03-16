@@ -58,12 +58,29 @@ body {
 	/*background-color: pink;*/
 }
 
+#over {
+	visibility: hidden;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -200px;
+	margin-top: -125px;
+	width: 400px;
+	height: 250px;
+	text-align: center;
+	background-color: rgba(0, 0, 0, 0.7);
+	color: white;
+	z-index: 2;
+}
+
+#over h1 {
+	color: yellow;
+}
+
 .aedes {
 	background-image: url("http://4.bp.blogspot.com/-922U1dBfps4/TpvrXSLrLKI/AAAAAAAABys/iKL9Vx5M1xE/s1600/nyamuk2.gif");
 	background-size: 100%;
 	width: 100px;
 	height: 65px;
 	position: absolute;
-	/*margin-left: 90%;*/
-	/*margin-top: 50%;*/
 }
