@@ -8,13 +8,13 @@ var allMosquitos = 0;
 var playerStatus = document.getElementById("disease");
 
 function addMosquito() {
-	var x = Math.floor(Math.random() * 50);
-	var y = Math.floor(Math.random() * 90);
+	var x = Math.floor(Math.random() * 80);
+	var y = Math.floor(Math.random() * 85);
 
 	var mosquito = document.createElement('div');
 	mosquito.setAttribute('class', 'aedes');
 	mosquito.setAttribute('onclick', 'killMosquito(this)');
-	mosquito.style.marginTop = x + "%";
+	mosquito.style.top = x + "%";
 	mosquito.style.marginLeft = y + "%";
 
 	document.getElementById("gameZone").appendChild(mosquito);
