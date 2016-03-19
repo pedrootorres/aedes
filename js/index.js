@@ -15,7 +15,7 @@ function addMosquito() {
 	mosquito.setAttribute('class', 'aedes');
 	mosquito.setAttribute('onclick', 'killMosquito(this)');
 	mosquito.style.top = x + "%";
-	mosquito.style.marginLeft = y + "%";
+	mosquito.style.left = y + "%";
 
 	document.getElementById("gameZone").appendChild(mosquito);
 }
@@ -105,13 +105,12 @@ function restart() {
 }
 
 function addTire() {
-	var marginLeft = Math.floor(Math.random() * 85);
+	var left = Math.floor(Math.random() * 85);
 
 	var tire = document.createElement('div');
 	tire.setAttribute('class', 'tire');
-	tire.style.marginLeft = marginLeft + "%";
+	tire.style.left = left + "%";
 	tire.style.bottom = Math.random() * (1000-900) + 900;
-	// tire.style.bottom = 1000;
 
 	document.getElementById("gameZone").appendChild(tire);
 
