@@ -96,6 +96,14 @@ body {
 	margin-top: 0px;
 }
 
+.clock {
+	background: url("http://worldartsme.com/images/alarm-clock-free-clipart-1.jpg") no-repeat;
+	background-size: 100%;
+	width: 35px;
+	height: 32px;
+	position: absolute;
+}
+
 #blackCurtains {
 	visibility: hidden;
 	position: absolute;
