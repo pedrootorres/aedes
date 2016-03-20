@@ -18,7 +18,7 @@ function addMosquito() {
 
 	var mosquito = document.createElement('div');
 	mosquito.setAttribute('class', 'aedes');
-	mosquito.setAttribute('onclick', 'killMosquito(this)');
+	mosquito.setAttribute('onMouseDown', 'killMosquito(this)');
 	mosquito.style.top = x + "%";
 	mosquito.style.left = y + "%";
 
@@ -147,7 +147,7 @@ function addClock() {
 
 	var clock = document.createElement('div');
 	clock.setAttribute('class', 'clock');
-	clock.setAttribute('onclick', 'activateClock(this)');
+	clock.setAttribute('onMouseDown', 'activateClock(this)');
 	clock.style.top = x + "%";
 	clock.style.left = y + "%";
 	document.getElementById("gameZone").appendChild(clock);

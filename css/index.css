@@ -80,10 +80,11 @@ body {
 }
 
 .aedes {
-	background-image: url("http://4.bp.blogspot.com/-922U1dBfps4/TpvrXSLrLKI/AAAAAAAABys/iKL9Vx5M1xE/s1600/nyamuk2.gif");
+	/*background-image: url("http://4.bp.blogspot.com/-922U1dBfps4/TpvrXSLrLKI/AAAAAAAABys/iKL9Vx5M1xE/s1600/nyamuk2.gif");*/
+	background-image: url("../img/mosquitos/mosquitos_mosquito_0.png");
 	background-size: 100%;
 	width: 100px;
-	height: 65px;
+	height: 100px;
 	position: absolute;
 }
 
