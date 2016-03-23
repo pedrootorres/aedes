@@ -1,3 +1,4 @@
+var gameZone = document.getElementById("gameZone");
 var probs = 0;
 var frequency = 2000;
 var checkpoint = 10;
@@ -6,29 +7,30 @@ var increment2 = 18;
 var score = document.getElementById("score");
 var fakeScore = 0;
 var value = 0;
-var allMosquitos = 0;
+var allMosquitos = document.getElementsByClassName("aedes");
 var playerStatus = document.getElementById("disease");
-var interval = setInterval(startGame, frequency);
+var interval;
 var clockProbability = 0.1;
 var clockEffect = false;
+var x, y;
+var mosquito;
 
 function addMosquito() {
-	var x = Math.floor(Math.random() * 80);
-	var y = Math.floor(Math.random() * 85);
+	x = Math.floor(Math.random() * 80);
+	y = Math.floor(Math.random() * 85);
 
-	var mosquito = document.createElement('div');
+	mosquito = document.createElement('div');
 	mosquito.setAttribute('class', 'aedes');
 	mosquito.setAttribute('onMouseDown', 'killMosquito(this)');
 	mosquito.style.top = x + "%";
 	mosquito.style.left = y + "%";
 
-	document.getElementById("gameZone").appendChild(mosquito);
+	gameZone.appendChild(mosquito);
 }
 
 function killMosquito(me) {
 	me.parentNode.removeChild(me);
 
-	score = document.getElementById("score");
 	value = parseInt(score.textContent);
 	value++;
 
@@ -60,6 +62,12 @@ function killMosquito(me) {
 	}
 }
 
+function begin() {
+	interval = setInterval(startGame, frequency);
+
+	document.getElementById("start").style.visibility = "hidden";
+}
+
 function startGame() {
 	addMosquito();
 
@@ -69,20 +77,18 @@ function startGame() {
 		addClock();
 	}
 
-	allMosquitos = document.getElementsByClassName("aedes").length;
-
-	if(allMosquitos > 100) {
+	if(allMosquitos.length > 100) {
 		clearInterval(interval);
 		document.getElementById("blackCurtains").style.visibility = "visible";
 		document.getElementById("finalScore").textContent = document.getElementById("score").textContent;
 		document.getElementById("over").style.visibility = "visible";
-	} else if(allMosquitos > 80) {
+	} else if(allMosquitos.length > 80) {
 		playerStatus.setAttribute('class', 'chikungunya');
 		playerStatus.textContent = "CHIKUNGUNYA";
-	} else if(allMosquitos > 40) {
+	} else if(allMosquitos.length > 40) {
 		playerStatus.setAttribute('class', 'zika');
 		playerStatus.textContent = "ZIKA";
-	} else if(allMosquitos > 20) {
+	} else if(allMosquitos.length > 20) {
 		playerStatus.setAttribute('class', 'dengue');
 		playerStatus.textContent = "DENGUE";
 	} else {
@@ -126,7 +132,7 @@ function addTire() {
 	tire.style.left = left + "%";
 	tire.style.bottom = Math.random() * (1000-900) + 900;
 
-	document.getElementById("gameZone").appendChild(tire);
+	gameZone.appendChild(tire);
 
 	var inter = setInterval(function() {gravity(tire, inter);}, 25);
 }
@@ -142,15 +148,15 @@ function gravity(obj, inter) {
 }
 
 function addClock() {
-	var x = Math.floor(Math.random() * 80);
-	var y = Math.floor(Math.random() * 85);
+	var z = Math.floor(Math.random() * 80);
+	var w = Math.floor(Math.random() * 85);
 
 	var clock = document.createElement('div');
 	clock.setAttribute('class', 'clock');
 	clock.setAttribute('onMouseDown', 'activateClock(this)');
-	clock.style.top = x + "%";
-	clock.style.left = y + "%";
-	document.getElementById("gameZone").appendChild(clock);
+	clock.style.top = z + "%";
+	clock.style.left = w + "%";
+	gameZone.appendChild(clock);
 
 	setTimeout(function() {clock.parentNode.removeChild(clock);}, 1500);
 }
