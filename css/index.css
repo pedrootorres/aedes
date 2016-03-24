@@ -118,6 +118,14 @@ body {
 	margin-top: 0px;
 }
 
+.lifeBar {
+	height: 5px;
+	width: 100%;
+	margin-top: -10px;
+	background-color: green;
+	visibility: hidden;
+}
+
 .clock {
 	background: url("http://worldartsme.com/images/alarm-clock-free-clipart-1.jpg") no-repeat;
 	background-size: 100%;

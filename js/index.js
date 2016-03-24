@@ -30,7 +30,7 @@ function addMosquito() {
 	allMosquitos++;
 	gameZone.appendChild(mosquito);
 
-	if(allMosquitos > 3) {
+	if(allMosquitos > 100) {
 		clearInterval(mainInterval);
 		clearInterval(mosquitoInterval);
 		document.getElementById("blackCurtains").style.visibility = "visible";
@@ -104,16 +104,33 @@ function addTrash() {
 
 	var tire = document.createElement('div');
 	tire.setAttribute('class', 'trash tire');
+	tire.setAttribute('life', "10");
+	tire.setAttribute('onclick', 'destroyTrash(this)');
 	tire.style.left = left + "%";
 	tire.style.bottom = Math.random() * (1000-900) + 900;
 
+	var lifebar = document.createElement('div');
+	lifebar.setAttribute('class', 'lifeBar');
+
+	tire.appendChild(lifebar);
 	gameZone.appendChild(tire);
 
 	var inter = setInterval(function() {gravity(tire, inter);}, 25);
 }
 
-function destroyTrash() {
+function destroyTrash(trash) {
+	var life = parseInt(trash.getAttribute("life"));
+	life--;
 
+	if(life == 0) {
+		trash.parentNode.removeChild(trash);
+	} else {
+		trash.firstChild.style.width = life*10 + "%";
+		trash.firstChild.style.visibility = "visible";
+		trash.setAttribute('life', life);
+
+		setTimeout(function() {trash.firstChild.style.visibility = "hidden";}, 1000);
+	}
 }
 
 function gravity(obj, inter) {
