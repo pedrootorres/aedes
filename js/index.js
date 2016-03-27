@@ -12,7 +12,7 @@ var mosquitoInterval;
 var probs = 0;
 var value = 0;
 var allMosquitos = 0;
-var clockProbability = 0.1;
+var clockProbability = 0.15;
 var clockEffect = false;
 
 var mosquito;
@@ -71,8 +71,20 @@ function begin() {
 function startGame() {
 	addTrash();
 
+	probs = Math.random();
+
+	if(probs < clockProbability) {
+		addClock();
+	}
+
 	clearInterval(mosquitoInterval);
-	mosquitoInterval = setInterval(addMosquito, mosquitoFrequency-(allTrash.length * 100));
+
+	f = mosquitoFrequency - (allTrash.length * 100);
+	if(f < 400) {
+		f = 400;
+	}
+
+	mosquitoInterval = setInterval(addMosquito, f);
 }
 
 function restart() {
@@ -161,10 +173,11 @@ function activateClock(clock) {
 	clock.style.visibility = "hidden";
 	clockEffect = true;
 
-	clearInterval(interval);
+	clearInterval(mosquitoInterval);
+	clearInterval(mainInterval);
 
 	setTimeout(function() {
 		clockEffect = false;
-		interval = setInterval(startGame, frequency);
+		mainInterval = setInterval(startGame, 4000);
 	}, 4000);
 }
