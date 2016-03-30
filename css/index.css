@@ -1,7 +1,3 @@
-html {
-	height: 100%;
-}
-
 body {
 	/*background: url("http://cache.clickcamboriu.com.br/2015/02/dom-jaime.jpg") no-repeat center center fixed;*/
 	background: url("http://s006.radikal.ru/i215/1010/ec/c29bf435b98b.jpg") no-repeat bottom fixed;
@@ -9,30 +5,61 @@ body {
 	height: auto;
 	font-family: Verdana, Geneva, sans-serif;
 	margin: 0;
+	padding: 0;
 }
 
 #topMenu {
-	background-color: blue;
-	position: relative;
+	/*position: relative;*/
 }
 
 #counter {
-	text-align: center;
-	background-color: red;
-	width: 130px;
+	text-align: left;
+	background-color: rgba(0, 0, 0, 0.4);
+	box-shadow: -1px 1px black;
+	color: white;
+	width: 17%;
 	height: 150px;
-	position: absolute;
+	float: left;
+}
+
+#counter p {
+	padding-left: 5px;
+}
+
+.scoreDiv {
+	padding-left: 5px;
+}
+
+.scoreDiv h1 {
+	display: inline;
+	margin-right: 5px;
+}
+
+.scoreDiv p {
+	display: inline;
+}
+
+#weapons {
+	display: inline-block;
+	background-color: rgba(0, 0, 0, 0.4);
+	box-shadow: -1px 1px black;
+	color: white;
+	height: 150px;
+	width: 70%;
+}
+
+#weapons p {
+	padding-left: 5px;
 }
 
 #status {
 	float: right;
 	text-align: center;
-	padding-right: 10px;
-	padding-top: 0px;
-	padding-left: 10px;
-	width: 130px;
+	width: 13%;
 	height: 150px;
-	background-color: green;
+	background-color: rgba(0, 0, 0, 0.4);
+	box-shadow: -1px 1px black;
+	color: white;
 }
 
 .nada {
@@ -55,7 +82,8 @@ body {
 
 #gameZone {
 	width: 100%;
-	height: 100%;
+	height: auto;
+	background-color: blue;
 }
 
 #start {

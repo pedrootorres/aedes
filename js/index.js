@@ -1,5 +1,5 @@
 var gameZone = document.getElementById("gameZone");
-var score = document.getElementById("score");
+var scoreMosquitos = document.getElementById("scoreMosquitos");
 var allTrash = document.getElementsByClassName("trash");
 var playerStatus = document.getElementById("disease");
 
@@ -55,10 +55,10 @@ function killMosquito(me) {
 	me.parentNode.removeChild(me);
 	allMosquitos--;
 
-	value = parseInt(score.textContent);
+	value = parseInt(scoreMosquitos.textContent);
 	value++;
 
-	score.textContent = value;
+	scoreMosquitos.textContent = value;
 }
 
 function begin() {
