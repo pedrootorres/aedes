@@ -19,12 +19,10 @@ function begin() {
 function updateGame() {
 	if(frame % trashFrequency == 0) {
 		addTrash();
-		console.log("lixo");
 	}
 
 	if(frame % mosquitoFrequency == 0) {
-		// addMosquito();
-		console.log("mosquito");
+		addMosquito();
 	}
 
 	for(var i = 0; i < allTrash.length; i++) {
@@ -53,4 +51,17 @@ function addTrash() {
 
 	gameZone.appendChild(tire);
 	allTrash.push(tire);
+}
+
+function addMosquito() {
+	var x = Math.floor(Math.random() * (window.innerHeight-200 - 150) + 150);
+	var y = Math.floor(Math.random() * (window.innerWidth-100));
+
+	var mosquito = document.createElement('div');
+	mosquito.setAttribute('class', 'aedes');
+	mosquito.setAttribute('onMouseDown', 'killMosquito(this)');
+	mosquito.style.top = x + "px";
+	mosquito.style.left = y + "px";
+
+	gameZone.appendChild(mosquito);
 }
