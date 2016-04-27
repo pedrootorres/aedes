@@ -1,6 +1,6 @@
 body {
 	/*background: url("http://cache.clickcamboriu.com.br/2015/02/dom-jaime.jpg") no-repeat center center fixed;*/
-	background: url("http://s006.radikal.ru/i215/1010/ec/c29bf435b98b.jpg") no-repeat bottom fixed;
+	background: url("../img/game_background.jpg") no-repeat bottom fixed;
 	background-size: 1500px;
 	height: auto;
 	font-family: Verdana, Geneva, sans-serif;
@@ -9,7 +9,8 @@ body {
 }
 
 #topMenu {
-	/*position: relative;*/
+	position: absolute;
+	width: 100%;
 }
 
 #counter {
@@ -142,6 +143,24 @@ body {
 	background-size: 100%;
 	width: 100px;
 	height: 74px;
+	position: absolute;
+	margin-top: 0px;
+}
+
+.vaseRed {
+	background: url("../img/vases/vases_vase_1.png") no-repeat;
+	background-size: 100%;
+	width: 100px;
+	height: 101px;
+	position: absolute;
+	margin-top: 0px;
+}
+
+.vaseYellow {
+	background: url("../img/vases/vases_vase_4.png") no-repeat;
+	background-size: 100%;
+	width: 100px;
+	height: 101px;
 	position: absolute;
 	margin-top: 0px;
 }
