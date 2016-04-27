@@ -16,7 +16,7 @@ function begin() {
 	document.getElementById("start").style.visibility = "hidden";
 
 	// mainInterval = setInterval(updateGame, 20);
-	newSetInterval(updateGame, 20);
+	newSetInterval(updateGame, 1000);
 }
 
 function newSetInterval(callback, duration, callbackArguments) {
@@ -37,16 +37,25 @@ function updateGame() {
 		addMosquito();
 	}
 
-	for(var i = 0; i < allTrash.length; i++) {
-		var y = parseInt(allTrash[i].style.bottom);
-		y-=8;
-		allTrash[i].style.bottom = y;
-		if(y < 48) {
-			allTrash.splice(i, 1);
-		}
-	}
+	// for(var i = 0; i < allTrash.length; i++) {
+	// 	var y = parseInt(allTrash[i].style.bottom);
+	// 	y-=8;
+	// 	allTrash[i].style.bottom = y;
+	// 	if(y < 48) {
+	// 		allTrash.splice(i, 1);
+	// 	}
+	// }
 
-	frame+=20;
+	frame+=1000;
+}
+
+function gravity(obj, inter) {
+	var y = parseInt(obj.style.bottom);
+	y-=8;
+	obj.style.bottom = y;
+	if(y < 48) {
+		clearInterval(inter);
+	}
 }
 
 function addTrash() {
@@ -65,7 +74,10 @@ function addTrash() {
 	tire.style.bottom = random.get() * (1000-900) + 900;
 
 	gameZone.appendChild(tire);
-	allTrash.push(tire);
+	// allTrash.push(tire);
+	var g = setInterval(function() {
+		gravity(tire, g);
+	}, 20);
 }
 
 function addMosquito() {
