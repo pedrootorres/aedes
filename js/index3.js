@@ -4,7 +4,7 @@ var random = new randomNumber();
 
 var mainInterval;
 
-var frame = -2000;
+var frame = -1000;
 
 var trashFrequency = 4000;
 var mosquitoFrequency = 2000;
@@ -15,7 +15,17 @@ var typesTrash = ['tire', 'vaseRed', 'vaseYellow'];
 function begin() {
 	document.getElementById("start").style.visibility = "hidden";
 
-	mainInterval = setInterval(updateGame, 20);
+	// mainInterval = setInterval(updateGame, 20);
+	newSetInterval(updateGame, 20);
+}
+
+function newSetInterval(callback, duration, callbackArguments) {
+	callback.apply(this, callbackArguments);
+	var args = arguments, scope = this;
+
+	setTimeout(function() {
+		newSetInterval.apply(scope, args);
+	}, duration);
 }
 
 function updateGame() {
