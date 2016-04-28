@@ -1,5 +1,4 @@
 body {
-	/*background: url("http://cache.clickcamboriu.com.br/2015/02/dom-jaime.jpg") no-repeat center center fixed;*/
 	background: url("../img/game_background.jpg") no-repeat bottom fixed;
 	background-size: 1500px;
 	height: auto;
@@ -83,8 +82,8 @@ body {
 
 #gameZone {
 	width: 100%;
-	height: auto;
-	background-color: blue;
+	height: 100%;
+	cursor: url(http://cur.cursors-4u.net/toons/too-9/too908.png), auto;
 }
 
 #start {
@@ -105,6 +104,10 @@ body {
 #start h1 {
 	color: yellow;
 	font-size: 2em;
+}
+
+#startButton {
+	visibility: hidden;
 }
 
 #over {
@@ -129,7 +132,6 @@ body {
 }
 
 .aedes {
-	/*background-image: url("http://4.bp.blogspot.com/-922U1dBfps4/TpvrXSLrLKI/AAAAAAAABys/iKL9Vx5M1xE/s1600/nyamuk2.gif");*/
 	background-image: url("../img/mosquitos/mosquitos_mosquito_0.png");
 	background-size: 100%;
 	width: 100px;
