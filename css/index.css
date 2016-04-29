@@ -76,6 +76,22 @@ body {
 	border: 5px solid #FFFF00;	
 }
 
+#specialWeapon {
+	float: right;
+	margin-right: 20px;
+	margin-top: -10px;
+	padding-top: 10px;
+}
+
+#specialWeapon > p {
+	float: right;
+	margin-top: -10px;
+}
+
+#repellent {
+	border: 5px solid gray;
+}
+
 #status {
 	float: right;
 	text-align: center;
@@ -191,12 +207,9 @@ body {
 	margin-top: 0px;
 }
 
-.lifeBar {
-	height: 5px;
-	width: 100%;
-	margin-top: -10px;
-	background-color: green;
-	visibility: hidden;
+.repellent {
+	width: 40px;
+	position: absolute;
 }
 
 .clock {
