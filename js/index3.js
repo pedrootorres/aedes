@@ -16,6 +16,11 @@ var mosquitoFrequency = 2000;
 
 var typesTrash = ['tire', 'vaseRed', 'vaseYellow'];
 
+/*
+* 0 = racket
+*/
+var weapon = 0;
+
 function begin() {
 	document.getElementById("start").style.visibility = "hidden";
 	document.getElementById("startButton").style.visibility = 'hidden';
@@ -67,12 +72,19 @@ function addMosquito() {
 }
 
 function killMosquito(mosquito) {
-	mosquito.parentNode.removeChild(mosquito);
+	if(weapon == 0) {
+		mosquito.parentNode.removeChild(mosquito);
 
-	value = parseInt(scoreMosquitos.textContent);
-	value++;
+		value = parseInt(scoreMosquitos.textContent);
+		value++;
 
-	scoreMosquitos.textContent = value;
+		scoreMosquitos.textContent = value;
+	}
+}
+
+function changeWeapon(w) {
+	weapon = parseInt(w.getAttribute("type"));
+	gameZone.style.cursor = "url(http://cur.cursors-4u.net/toons/too-9/too908.png), auto";
 }
 
 function gravity(obj, inter) {
