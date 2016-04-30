@@ -12,11 +12,14 @@ var random = new randomNumber();
 var mainInterval;
 
 var frame = -1000;
-var trashFrequency = 4000;
+var trashFrequency = 6000;
 var mosquitoFrequency = 2000;
-var intervalFrequency = 1000;
+var intervalFrequency = 20;
 
 var repellentProbability = 0.10;
+
+var amountOfTrash = 0;
+var currentLevel = 1;
 
 var typesTrash = ['tire', 'vaseRed', 'vaseYellow'];
 
@@ -32,15 +35,59 @@ function begin() {
 	document.getElementById("startButton").style.visibility = 'hidden';
 
 	// mainInterval = setInterval(updateGame, 20);
-	newSetInterval(updateGame, intervalFrequency);
+	// newSetInterval(updateGame, intervalFrequency);
+	nextLevel(currentLevel);
 }
 
-function updateGame() {
-	if(frame % trashFrequency == 0) {
+function nextLevel (lvl) {
+	if(lvl == 1) {
+		frame = -6000;
+		trashFrequency = 6000;
+		mosquitoFrequency = 2000;
+		amountOfTrash = 5;		
+	} else if(lvl == 2) {
+		frame = -6000;
+		trashFrequency = 5500;
+		mosquitoFrequency = 1900;
+		amountOfTrash = 8;		
+	} else if(lvl == 3) {
+		frame = -6000;
+		trashFrequency = 5000;
+		mosquitoFrequency = 1900;
+		amountOfTrash = 12;		
+	} else if(lvl == 4) {
+		frame = -6000;
+		trashFrequency = 4500;
+		mosquitoFrequency = 1700;
+		amountOfTrash = 16;		
+	} else if(lvl == 5) {
+		frame = -6000;
+		trashFrequency = 4500;
+		mosquitoFrequency = 1500;
+		amountOfTrash = 18;		
+	}
+
+	for(var i = 0; i < amountOfTrash; i++) {
 		addTrash();
 	}
 
-	if(frame % mosquitoFrequency == 0) {
+	document.getElementById("blackCurtains").style.visibility = "visible";
+	mainInterval = setInterval(updateGame, 20);
+	setTimeout(function() {
+		document.getElementById("blackCurtains").style.visibility = "hidden";
+	}, 6000);
+}
+
+function updateGame() {
+	if(frame % trashFrequency == 0 && frame > 0) {
+		addTrash();
+		amountOfTrash++;
+
+		mosquitoFrequency -= 100;
+		mosquitoFrequency < 500 ? mosquitoFrequency = 500 : mosquitoFrequency = mosquitoFrequency;
+	}
+
+	if(frame % mosquitoFrequency == 0 && frame > 0) {
 		addMosquito();
 
 		if(random.get() <= repellentProbability){
@@ -49,6 +96,11 @@ function updateGame() {
 	}
 
 	frame+=intervalFrequency;
+
+	if(amountOfTrash == 0) {
+		clearInterval(mainInterval);
+		nextLevel(++currentLevel);
+	}
 }
 
 function addRepellent() {
