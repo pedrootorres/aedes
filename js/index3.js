@@ -21,10 +21,14 @@ var repellentProbability = 0.10;
 var amountOfTrash = 0;
 var currentLevel = 1;
 
+// var typesTrash = ['tire', 'vaseRed', 'vaseYellow', 'garbage', 'waterTank'];
 var typesTrash = ['tire', 'vaseRed', 'vaseYellow'];
 
 /*
 * 0 = racket
+* 1 = broom
+* 2 = shovel
+* 3 = hand
 */
 var weapon = 0;
 
@@ -83,8 +87,7 @@ function updateGame() {
 		addTrash();
 		amountOfTrash++;
 
-		mosquitoFrequency -= 100;
-		mosquitoFrequency < 500 ? mosquitoFrequency = 500 : mosquitoFrequency = mosquitoFrequency;
+		changeMosquitoFrequency(-100);
 	}
 
 	if(frame % mosquitoFrequency == 0 && frame > 0) {
@@ -100,6 +103,18 @@ function updateGame() {
 	if(amountOfTrash == 0) {
 		clearInterval(mainInterval);
 		nextLevel(++currentLevel);
+	}
+}
+
+function changeMosquitoFrequency(ms) {
+	var temp = mosquitoFrequency + ms;
+
+	if(temp < 500) {
+		mosquitoFrequency = 500;
+	} else if(temp > 2000 ) {
+		mosquitoFrequency = 2000;
+	} else {
+		mosquitoFrequency = temp;
 	}
 }
 
@@ -152,6 +167,8 @@ function addTrash() {
 
 	var trash = document.createElement('div');
 	trash.setAttribute('class', 'trash ' + typesTrash[whichTrash]);
+	trash.setAttribute('life', 10);
+	trash.setAttribute('type', whichTrash);
 	trash.setAttribute('onclick', 'destroyTrash(this)');
 	trash.style.left = left;
 	trash.style.bottom = random.get() * (1000-900) + 900;
@@ -161,6 +178,37 @@ function addTrash() {
 	var g = setInterval(function() {
 		gravity(trash, g);
 	}, 25);
+}
+
+function destroyTrash (t) {
+	var rightWeapon = false;
+
+	if(weapon == 1) {
+		if(t.getAttribute('type') == 3) {
+			rightWeapon = true;
+		}
+	} else if(weapon == 2) {
+		if(t.getAttribute('type') == 1 || t.getAttribute('type') == 2) {
+			rightWeapon = true;
+		}
+	} else if(weapon == 3) {
+		if(t.getAttribute('type') == 0 || t.getAttribute('type') == 4) {
+			rightWeapon = true;
+		}
+	}
+
+	if(rightWeapon) {
+		var life = parseInt(t.getAttribute('life'));
+		life--;
+
+		if(life < 0) {
+			t.parentNode.removeChild(t);
+			amountOfTrash--;
+			changeMosquitoFrequency(100);
+		} else {
+			t.setAttribute('life', life);
+		}
+	}
 }
 
 function addMosquito() {
