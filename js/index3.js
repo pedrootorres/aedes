@@ -6,6 +6,7 @@ var gameZone = document.getElementById("gameZone");
 var scoreMosquitos = document.getElementById("scoreMosquitos");
 var scoreSource = document.getElementById("scoreSource");
 var repellentQty = document.getElementById("repellentQty");
+var personLeft = document.getElementById("person").getBoundingClientRect().left;
 
 var random = new randomNumber();
 
@@ -212,16 +213,45 @@ function destroyTrash (t) {
 }
 
 function addMosquito() {
-	var x = Math.floor(random.get() * (window.innerHeight-200 - 150) + 150);
-	var y = Math.floor(random.get() * (window.innerWidth-100));
+	var x = Math.floor(random.get() * (window.innerHeight-200 - 200) + 200);
+	// var y = Math.floor(random.get() * (window.innerWidth-100));
 
 	var mosquito = document.createElement('div');
 	mosquito.setAttribute('class', 'aedes');
 	mosquito.setAttribute('onMouseDown', 'killMosquito(this)');
 	mosquito.style.top = x;
-	mosquito.style.left = y;
+	mosquito.style.left = -100;
 
 	gameZone.appendChild(mosquito);
+
+	var probs = random.get();
+	var speed;
+
+	if(probs < 0.05) {
+		speed = 8;
+	} else if(probs < 0.15) {
+		speed = 6;
+	} else if(probs < 0.40) {
+		speed = 1;
+	} else if(probs < 0.80) {
+		speed = 3;
+	} else if(probs < 1) {
+		speed = 4	
+	}
+
+	var interval = setInterval(function() {
+		fly(mosquito, interval, speed);
+	}, 25);
+}
+
+function fly(mosquito, interval, speed) {
+	var left = parseInt(mosquito.style.left);
+	left += speed;
+	mosquito.style.left = left;
+
+	if(left > personLeft) {
+		clearInterval(interval);
+	}
 }
 
 function killMosquito(mosquito) {

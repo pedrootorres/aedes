@@ -171,6 +171,13 @@ body {
 	font-size: 2em;
 }
 
+#person {
+	width: 170px;
+	right: 80px;
+	bottom: 48px;
+	position: absolute;
+}
+
 .aedes {
 	background-image: url("../img/mosquitos/mosquitos_mosquito_0.png");
 	background-size: 100%;
