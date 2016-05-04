@@ -171,6 +171,24 @@ body {
 	font-size: 2em;
 }
 
+#threeTwoOne {
+	width: 68px;
+	height: 120px;
+	left: 50%;
+	top: 50%;
+	margin-left: -34px;
+	margin-top: -60px;
+	font-weight: bold;
+	color: white;
+	position: absolute;
+	visibility: hidden;
+}
+
+#threeTwoOne h1 {
+	font-size: 6em;
+	margin: 0;
+}
+
 #person {
 	width: 170px;
 	right: 80px;

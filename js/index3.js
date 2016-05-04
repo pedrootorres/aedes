@@ -46,27 +46,27 @@ function begin() {
 
 function nextLevel (lvl) {
 	if(lvl == 1) {
-		frame = -6000;
+		frame = 0;
 		trashFrequency = 6000;
 		mosquitoFrequency = 2000;
 		amountOfTrash = 5;		
 	} else if(lvl == 2) {
-		frame = -6000;
+		frame = 0;
 		trashFrequency = 5500;
 		mosquitoFrequency = 1900;
 		amountOfTrash = 8;		
 	} else if(lvl == 3) {
-		frame = -6000;
+		frame = 0;
 		trashFrequency = 5000;
 		mosquitoFrequency = 1900;
 		amountOfTrash = 12;		
 	} else if(lvl == 4) {
-		frame = -6000;
+		frame = 0;
 		trashFrequency = 4500;
 		mosquitoFrequency = 1700;
 		amountOfTrash = 16;		
 	} else if(lvl == 5) {
-		frame = -6000;
+		frame = 0;
 		trashFrequency = 4500;
 		mosquitoFrequency = 1500;
 		amountOfTrash = 18;		
@@ -76,11 +76,24 @@ function nextLevel (lvl) {
 		addTrash();
 	}
 
+	document.getElementById("threeTwoOne").style.visibility = "visible";
+	var threeTwoOne = document.getElementById("threeTwoOne").firstChild;
+	var countdown = 3;
+
 	document.getElementById("blackCurtains").style.visibility = "visible";
-	mainInterval = setInterval(updateGame, 20);
-	setTimeout(function() {
-		document.getElementById("blackCurtains").style.visibility = "hidden";
-	}, 6000);
+	var countdownInterval = setInterval(function() {
+		var temp = parseInt(threeTwoOne.textContent);
+		temp--;
+		threeTwoOne.textContent = temp;
+		countdown--;
+
+		if(countdown < 1) {
+			clearInterval(countdownInterval);
+			document.getElementById("blackCurtains").style.visibility = "hidden";
+			document.getElementById("threeTwoOne").style.visibility = "hidden";
+			mainInterval = setInterval(updateGame, 20);
+		}
+	}, 1000);
 }
 
 function updateGame() {
