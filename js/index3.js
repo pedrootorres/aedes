@@ -7,6 +7,7 @@ var scoreMosquitos = document.getElementById("scoreMosquitos");
 var scoreSource = document.getElementById("scoreSource");
 var repellentQty = document.getElementById("repellentQty");
 var personLeft = document.getElementById("person").getBoundingClientRect().left;
+var symptomStatus = document.getElementById("symptom");
 
 var random = new randomNumber();
 
@@ -27,6 +28,15 @@ var currentLevel = 1;
 // var typesTrash = ['tire', 'vaseRed', 'vaseYellow', 'garbage', 'waterTank'];
 var typesTrash = ['tire', 'vaseRed', 'vaseYellow'];
 
+var diseasesAndSymptoms = [
+							['Dengue', 'Febre alta', 'Dor de cabeça', 'Dor no corpo'],
+							['Zika', 'Febre baixa', 'Coceira', 'Manchas na Pele'],
+							['Chikungunya', 'Febra alta', 'Dor muscular', 'Inchaço nas Articulações']
+						  ];
+
+var currentDisease;
+var currentSymptom = 0;
+
 /*
 * 0 = racket
 * 1 = broom
@@ -43,6 +53,9 @@ function begin() {
 
 	// mainInterval = setInterval(updateGame, 20);
 	// newSetInterval(updateGame, intervalFrequency);
+
+	currentDisease = Math.floor(random.get() * 3);
+	console.log(currentDisease);
 	nextLevel(currentLevel);
 }
 
@@ -325,6 +338,12 @@ function killMosquito(me) {
 
 		scoreMosquitos.textContent = value;
 	}
+}
+
+function addNewSymptom() {
+	currentSymptom++;
+
+	symptomStatus.textContent = diseasesAndSymptoms[currentDisease][currentSymptom];
 }
 
 function changeWeapon(w) {
