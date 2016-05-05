@@ -29,8 +29,8 @@
 			</div>
 
 			<div id="status">
-				<p>Status:</p>
-				<h1 id="symptom" class="nada">NADA</h1>
+				<p>Sintoma:</p>
+				<h1 id="symptom" class="nada">Nenhum</h1>
 			</div>
 		</div>
 
@@ -52,10 +52,16 @@
 			<h2>3</h2>
 		</div>
 
-		<div id="gameZone">
-			<!-- <img src="img/person.png" alt="" id="person"> -->
-			<div id="person"></div>
+		<div id="warning">
+			<h1>Você foi picado!</h1>
+			<p>Ah não! Você foi picado e está com um novo sintoma! Tome cuidado e lembre-se: não deixe que os mosquitos te piquem.</p>
+			<p>Você tem mais <chances>3</chances> chances!</p>
+			<button id="continue" onclick="continueGame()">Continuar</button>
 		</div>
+
+		<div id="person"></div>
+
+		<div id="gameZone"></div>
 	</body>
 
 	<script type="text/javascript" src="js/index3.js"></script>

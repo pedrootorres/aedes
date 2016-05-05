@@ -8,6 +8,7 @@ var scoreSource = document.getElementById("scoreSource");
 var repellentQty = document.getElementById("repellentQty");
 var personLeft = document.getElementById("person").getBoundingClientRect().left;
 var symptomStatus = document.getElementById("symptom");
+var warning = document.getElementById("warning");
 
 var random = new randomNumber();
 
@@ -55,7 +56,6 @@ function begin() {
 	// newSetInterval(updateGame, intervalFrequency);
 
 	currentDisease = Math.floor(random.get() * 3);
-	console.log(currentDisease);
 	nextLevel(currentLevel);
 }
 
@@ -124,7 +124,6 @@ function updateGame() {
 	}
 
 	if(frame % mosquitoFrequency == 0 && frame > 0) {
-		console.log("passou");
 		var m = new addMosquito();
 		m.fly();
 
@@ -325,10 +324,11 @@ function collision(me) {
 	me.stopFlying();
 
 	clearInterval(mainInterval);
+	addNewSymptom();
+	showWarning();
 }
 
 function killMosquito(me) {
-	console.log(me);
 	if(weapon == 0) {
 		me.mosquito.parentNode.removeChild(me.mosquito);
 		me.stopFlying();
@@ -344,6 +344,23 @@ function addNewSymptom() {
 	currentSymptom++;
 
 	symptomStatus.textContent = diseasesAndSymptoms[currentDisease][currentSymptom];
+}
+
+function showWarning() {
+	document.getElementById("blackCurtains").style.visibility = "visible";
+	warning.children[2].children[0].textContent = diseasesAndSymptoms[currentDisease].length - currentSymptom;
+	warning.style.visibility = 'visible';
+}
+
+function continueGame() {
+	while(gameZone.children[0]) {
+		gameZone.children[0].parentNode.removeChild(gameZone.children[0]);
+	}
+
+	warning.style.visibility = 'hidden';
+	document.getElementById("blackCurtains").style.visibility = "hidden";
+
+	nextLevel(currentLevel);
 }
 
 function changeWeapon(w) {
