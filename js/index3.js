@@ -14,9 +14,9 @@ var mainInterval;
 
 var stopGame = false;
 
-var frame = -1000;
-var trashFrequency = 6000;
-var mosquitoFrequency = 2000;
+var frame;
+var trashFrequency;
+var mosquitoFrequency;
 var intervalFrequency = 20;
 
 var repellentProbability = 0.10;
@@ -72,6 +72,8 @@ function nextLevel (lvl) {
 		trashFrequency = 4500;
 		mosquitoFrequency = 1500;
 		amountOfTrash = 18;		
+	} else {
+		// fim de jogo
 	}
 
 	for(var i = 0; i < amountOfTrash; i++) {
@@ -79,22 +81,24 @@ function nextLevel (lvl) {
 	}
 
 	document.getElementById("threeTwoOne").style.visibility = "visible";
-	var threeTwoOne = document.getElementById("threeTwoOne").firstChild;
+	var threeTwoOne = document.getElementById("threeTwoOne").children[1];
+	document.getElementById("threeTwoOne").children[0].textContent = "Fase " + lvl;
+
 	var countdown = 3;
+	threeTwoOne.textContent = countdown;
 
 	document.getElementById("blackCurtains").style.visibility = "visible";
 	var countdownInterval = setInterval(function() {
-		var temp = parseInt(threeTwoOne.textContent);
-		temp--;
-		threeTwoOne.textContent = temp;
-		countdown--;
-
 		if(countdown < 1) {
 			clearInterval(countdownInterval);
 			document.getElementById("blackCurtains").style.visibility = "hidden";
 			document.getElementById("threeTwoOne").style.visibility = "hidden";
+			stopGame = false;
 			mainInterval = setInterval(updateGame, 20);
 		}
+
+		countdown--;
+		threeTwoOne.textContent = countdown;
 	}, 1000);
 }
 
@@ -107,6 +111,7 @@ function updateGame() {
 	}
 
 	if(frame % mosquitoFrequency == 0 && frame > 0) {
+		console.log("passou");
 		var m = new addMosquito();
 		m.fly();
 
@@ -221,11 +226,28 @@ function destroyTrash (t) {
 		if(life < 0) {
 			t.parentNode.removeChild(t);
 			amountOfTrash--;
-			changeMosquitoFrequency(100);
+
+			if(amountOfTrash == 0) {
+				endCurrentLevel();
+			} else {
+				changeMosquitoFrequency(100);
+			}
 		} else {
 			t.setAttribute('life', life);
 		}
 	}
+}
+
+function endCurrentLevel() {
+	stopGame = true;
+	clearInterval(mainInterval);
+
+	var allMosquitos = document.getElementsByClassName("aedes");
+	while(allMosquitos[0]) {
+		allMosquitos[0].parentNode.removeChild(allMosquitos[0]);
+	}
+
+	nextLevel(++currentLevel);
 }
 
 function addMosquito() {
@@ -233,7 +255,6 @@ function addMosquito() {
 
 	this.mosquito = document.createElement('div');
 	this.mosquito.setAttribute('class', 'aedes');
-	// this.mosquito.setAttribute('onMouseDown', 'killMosquito(this)');
 	this.mosquito.style.top = x;
 	this.mosquito.style.left = -100;
 
@@ -270,7 +291,7 @@ function addMosquito() {
 	}
 
 	var me = this;
-	this.mosquito.onclick = function() {killMosquito(me);};
+	this.mosquito.onclick = function() { killMosquito(me); };
 }
 
 function fly(mosquito, speed, me) {
@@ -288,7 +309,7 @@ function fly(mosquito, speed, me) {
 function collision(me) {
 	stopGame = true;
 	me.stopFlying();
-	// clearInterval(me.stopFlying());
+
 	clearInterval(mainInterval);
 }
 

@@ -172,25 +172,31 @@ body {
 }
 
 #threeTwoOne {
-	width: 68px;
-	height: 120px;
-	left: 50%;
-	top: 50%;
-	margin-left: -34px;
-	margin-top: -60px;
-	font-weight: bold;
-	color: white;
-	position: absolute;
 	visibility: hidden;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -100px;
+	margin-top: -75px;
+	width: 200px;
+	height: 150px;
+	text-align: center;
+	background-color: rgba(0, 0, 0, 0.7);
+	color: white;
+	font-size: 1em;
+	z-index: 10;
 }
 
 #threeTwoOne h1 {
-	font-size: 6em;
-	margin: 0;
+	color: yellow;
+	font-size: 2em;
 }
 
 #person {
+	background-image: url("../img/person.png");
+	background-size: 100%;
 	width: 170px;
+	height: 480px;
 	right: 80px;
 	bottom: 48px;
 	position: absolute;
