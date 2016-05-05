@@ -226,6 +226,7 @@ function destroyTrash (t) {
 		if(life < 0) {
 			t.parentNode.removeChild(t);
 			amountOfTrash--;
+			scoreSource.textContent = parseInt(scoreSource.textContent) + 1;
 
 			if(amountOfTrash == 0) {
 				endCurrentLevel();
