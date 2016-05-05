@@ -12,6 +12,8 @@ var random = new randomNumber();
 
 var mainInterval;
 
+var stopGame = false;
+
 var frame = -1000;
 var trashFrequency = 6000;
 var mosquitoFrequency = 2000;
@@ -105,7 +107,8 @@ function updateGame() {
 	}
 
 	if(frame % mosquitoFrequency == 0 && frame > 0) {
-		addMosquito();
+		var m = new addMosquito();
+		m.fly();
 
 		if(random.get() <= repellentProbability){
 			addRepellent();
@@ -227,49 +230,73 @@ function destroyTrash (t) {
 
 function addMosquito() {
 	var x = Math.floor(random.get() * (window.innerHeight-200 - 200) + 200);
-	// var y = Math.floor(random.get() * (window.innerWidth-100));
 
-	var mosquito = document.createElement('div');
-	mosquito.setAttribute('class', 'aedes');
-	mosquito.setAttribute('onMouseDown', 'killMosquito(this)');
-	mosquito.style.top = x;
-	mosquito.style.left = -100;
+	this.mosquito = document.createElement('div');
+	this.mosquito.setAttribute('class', 'aedes');
+	// this.mosquito.setAttribute('onMouseDown', 'killMosquito(this)');
+	this.mosquito.style.top = x;
+	this.mosquito.style.left = -100;
 
-	gameZone.appendChild(mosquito);
+	gameZone.appendChild(this.mosquito);
 
 	var probs = random.get();
-	var speed;
+	this.speed;
 
 	if(probs < 0.05) {
-		speed = 8;
+		this.speed = 8;
 	} else if(probs < 0.15) {
-		speed = 6;
+		this.speed = 6;
 	} else if(probs < 0.40) {
-		speed = 1;
+		this.speed = 1;
 	} else if(probs < 0.80) {
-		speed = 3;
+		this.speed = 3;
 	} else if(probs < 1) {
-		speed = 4	
+		this.speed = 4	
 	}
 
-	var interval = setInterval(function() {
-		fly(mosquito, interval, speed);
-	}, 25);
+	this.flyInterval;
+
+	this.fly = function() {
+		var mosquito = this.mosquito;
+		var speed = this.speed;
+		var me = this;
+		this.flyInterval = setInterval(function() {
+			fly(mosquito, speed, me);
+		}, 25);
+	}
+
+	this.stopFlying = function() {
+		clearInterval(this.flyInterval);
+	}
+
+	var me = this;
+	this.mosquito.onclick = function() {killMosquito(me);};
 }
 
-function fly(mosquito, interval, speed) {
+function fly(mosquito, speed, me) {
 	var left = parseInt(mosquito.style.left);
 	left += speed;
 	mosquito.style.left = left;
 
 	if(left > personLeft) {
-		clearInterval(interval);
+		collision(me);
+	} else if(stopGame) {
+		me.stopFlying();
 	}
 }
 
-function killMosquito(mosquito) {
+function collision(me) {
+	stopGame = true;
+	me.stopFlying();
+	// clearInterval(me.stopFlying());
+	clearInterval(mainInterval);
+}
+
+function killMosquito(me) {
+	console.log(me);
 	if(weapon == 0) {
-		mosquito.parentNode.removeChild(mosquito);
+		me.mosquito.parentNode.removeChild(me.mosquito);
+		me.stopFlying();
 
 		value = parseInt(scoreMosquitos.textContent);
 		value++;
