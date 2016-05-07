@@ -3,11 +3,13 @@
 		<title>#ZikaZero</title>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="css/index.css">
+		<link rel="stylesheet" type="text/css" href="css/sweetalert2.min.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
 	</head>
 
 	<body>
 		<div id="blackCurtains"></div>
+		<!-- <div id="fadeCurtains"></div> -->
 
 		<div id="topMenu">
 			<div id="counter">
@@ -40,12 +42,18 @@
 			<button onclick="begin()" id="startButton">Começar o jogo!</button>
 		</div>
 
-		<div id="over">
-			<h1>GAME OVER</h1>
-			<p>Você não conseguiu suportar todas essas doenças e morreu! Mas pelo menos você conseguiu matar todos esses mosquitos:</p>
-			<h2 id="finalScore">0</h2>
+		<!-- <div id="over">
+			<h1>FIM DE JOGO</h1>
+			<p>Que pena! Você não conseguiu destruir os focos e agora não está se sentindo bem depois desse ataque de mosquitos. Esses são os sintomas que você tem:</p>
+			<ul id="symptomsList">
+				<li>Febra alta</li>
+				<li>Dor de cabeça</li>
+				<li>Dor no corpo</li>
+			</ul>
+			<p>Provavelmente você está com <b>DENGUE</b>! Saiba mais sobre os perigos e complicações dessa e de outras doenças que são transmitidas pelo mosquito <i>Aedes aegypti</i> <a href="">clicando aqui.</a></p>
+			<p></p>
 			<button onclick="restart()">Jogar de novo!</button>
-		</div>
+		</div> -->
 
 		<div id="threeTwoOne">
 			<h1>Fase 1</h1>
@@ -65,4 +73,5 @@
 	</body>
 
 	<script type="text/javascript" src="js/index3.js"></script>
+	<script src="js/sweetalert2.min.js"></script>
 </html>

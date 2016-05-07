@@ -9,6 +9,7 @@ var repellentQty = document.getElementById("repellentQty");
 var personLeft = document.getElementById("person").getBoundingClientRect().left;
 var symptomStatus = document.getElementById("symptom");
 var warning = document.getElementById("warning");
+var over = document.getElementById("over");
 
 var random = new randomNumber();
 
@@ -324,8 +325,7 @@ function collision(me) {
 	me.stopFlying();
 
 	clearInterval(mainInterval);
-	addNewSymptom();
-	showWarning();
+	addNewSymptom();	
 }
 
 function killMosquito(me) {
@@ -343,7 +343,12 @@ function killMosquito(me) {
 function addNewSymptom() {
 	currentSymptom++;
 
-	symptomStatus.textContent = diseasesAndSymptoms[currentDisease][currentSymptom];
+	if(currentSymptom < diseasesAndSymptoms[currentDisease].length) {
+		symptomStatus.textContent = diseasesAndSymptoms[currentDisease][currentSymptom];
+		showWarning();
+	} else {
+		gameOver();
+	}
 }
 
 function showWarning() {
@@ -361,6 +366,71 @@ function continueGame() {
 	document.getElementById("blackCurtains").style.visibility = "hidden";
 
 	nextLevel(currentLevel);
+}
+
+function gameOver() {
+	var symptomsText;
+
+	if(currentDisease == 0) {
+		symptomsText = 'O primeiro sintoma da Dengue é a febre alta, entre 39° e 40°C. Tem início repentino e geralmente dura de 2 a 7 dias, acompanhada de dor de cabeça, dores no corpo e articulações, prostração, fraqueza, dor atrás dos olhos, erupção e coceira no corpo. Pode haver perda de peso, náuseas e vômitos.';
+	} else if(currentDisease == 1) {
+		symptomsText = 'A Zika tem como principal sintoma o exantema (erupção na pele) com coceira, febre baixa (ou ausência de febre), olhos vermelhos sem secreção ou coceira, dor nas articulações, dor nos músculos e dor de cabeça. Normalmente os sintomas desaparecem após 3 a 7 dias.'
+	} else {
+		symptomsText = 'A Chikungunya apresenta sintomas como febre alta, dor muscular e nas articulações, dor de cabeça e exantema (erupção na pele). Os sinais costumam durar de 3 a 10 dias.'
+	}
+
+	swal({
+		title: "FIM DE JOGO",
+		// imageUrl: 'img/mosquitos/mosquitos_mosquito_3.png',
+		// imageWidth: 300,
+		// imageHeight: 300,
+		// width: 500,
+		customClass: 'gameOverAlert',
+		html: '<p>Que pena! Você não conseguiu eliminar todos os focos e agora não está se sentindo bem depois desse ataque de mosquitos. Esses são os sintomas que você tem:</p>' +
+			'<ul id="symptomsList">' +
+				'<li>' + diseasesAndSymptoms[currentDisease][1] + '</li>' +
+				'<li>' + diseasesAndSymptoms[currentDisease][2] + '</li>' +
+				'<li>' + diseasesAndSymptoms[currentDisease][3] + '</li>' +
+			'</ul>' +
+				'<p>Provavelmente você está com <b>' + diseasesAndSymptoms[currentDisease][0].toUpperCase() + '</b>! ' +
+				symptomsText +
+				'<p>Saiba mais sobre essa e outras doenças transmitidas pelo mosquito <i>Aedes aegypti</i> <a href="http://combateaedes.saude.gov.br/sintomas" target="_blank">clicando aqui</a></p>' +
+				'<h3>Como se prevenir</h3>' +
+				'<p>Não adianta apenas matar o mosquito; Você não pode deixar ele nascer. E isso depende de todos! Ações simples podem acabar com os focos. Faça a sua parte!</p>' +
+				'<div id="prevention">' +
+					'<div class="waterTankImage">' +
+						'<img src="img/water_tank_icon.png" alt=""/>' +
+						'<p>Mantenha bem tampados: caixas, tonéis e barris de água.</p>' +
+					'</div>' +
+					'<div class="vaseImage">' +
+						'<img src="img/vase_icon.png" alt=""/>' +
+						'<p>Encha os pratinhos ou vasos de planta com areia até a borda.</p>' +
+					'</div>' +
+				'</div>' +
+				'<p>Se for guardar pneus velhos em casa, retire toda a água e mantenha-os em locais cobertos, protegidos da chuva. Não se esqueça também de não jogar lixo em terrenos baldios! Veja outras ações que você deve seguir para ajudar no combate <a href="http://www.saude.ba.gov.br/novoportal/index.php?option=com_content&view=article&id=9345%3Aacoes-para-eliminar-os-focos-do-mosquito-aedes-aegypt&catid=25%3Aorientacao-e-prevencao&Itemid=25" target="_blank">clicando aqui.</a></p>' +
+				'<h3>Tratamento</h3>' +
+				'<p>Os sintomas da Dengue, Zika e Chikungunya podem ser parecidos, mas o tratamento é diferente para cada doença. Vá ao posto de saúde se estiver com os sintomas. <b>Evite a automedicação</b>.</p>' +
+				'<h3>Fique por dentro!</h3>' +
+				'<div id="stayTuned">' +
+					'<div class="facebook">' +
+						'<a href="http://facebook.com/minsaude" target="_blank"><img src="img/fb_icon.jpg" alt=""/></a>' +
+						'<p>Curta a página do <i>Ministério da Saúde</i> no Facebook</p>' +
+					'</div>' +
+					'<div class="website">' +
+						'<a href="http://combateaedes.saude.gov.br/" target="_blank"><img src="img/combatedengue.png" alt=""/></a>' +
+						'<p>Site oficial do Combate ao Mosquito</p>' +
+					'</div>' +
+					'<div class="disqueSaude">' +
+						'<img src="img/disquesaude.jpg" alt=""/>' +
+						'<p>Para mais informações sobre as doenças</p>' +
+					'</div>' +
+				'</div>',
+		confirmButtonText: "Jogar novamente",
+		allowEscapeKey: false,
+		allowOutsideClick: false,
+	});
+
+	document.getElementsByClassName('gameOverAlert')[0].scrollTop = 0;
 }
 
 function changeWeapon(w) {
