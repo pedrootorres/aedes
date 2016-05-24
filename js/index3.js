@@ -387,6 +387,56 @@ function continueGame() {
 	nextLevel(currentLevel);
 }
 
+function victoryGameOver() {
+	swal({
+		title: "PARABÉNS",
+		customClass: 'gameOverAlert',
+		html: '<p>Você sobreviveu ao ataque de mosquitos e, o mais importante, conseguiu destruir todos os focos do <i>Aedes aegypti</i>! Excelente trabalho!</p>' +
+			'<p>Agora que você já fez a sua parte, converse com seus vizinhos para que eles também ajudem no combate. Lembre eles que não adianta apenas matar o mosquito; Nós não podemos deixar ele nascer. Isso depende de todos! E são simples ações que podem acabar com os focos.</p>' +
+			'<h3>Como se prevenir</h3>' +
+			'<div id="prevention">' +
+				'<div class="waterTankImage">' +
+					'<img src="img/water_tank_icon.png" alt=""/>' +
+					'<p>Mantenha bem tampados: caixas, tonéis e barris de água.</p>' +
+				'</div>' +
+				'<div class="vaseImage">' +
+					'<img src="img/vase_icon.png" alt=""/>' +
+					'<p>Encha os pratinhos ou vasos de planta com areia até a borda.</p>' +
+				'</div>' +
+			'</div>' +
+			'<p>Se for guardar pneus velhos em casa, retire toda a água e mantenha-os em locais cobertos, protegidos da chuva. Não se esqueça também de <b>não</b> jogar lixo em terrenos baldios! Veja outras ações que você deve seguir para ajudar no combate <a href="http://www.saude.ba.gov.br/novoportal/index.php?option=com_content&view=article&id=9345%3Aacoes-para-eliminar-os-focos-do-mosquito-aedes-aegypt&catid=25%3Aorientacao-e-prevencao&Itemid=25" target="_blank">clicando aqui.</a></p>' +
+			'<h3>Sua pontuação</h3>' +
+			'<p>Você mantou <b>' + scoreMosquitos.textContent + '</b> mosquitos</p>' +
+			'<p>e destruiu <b>' + scoreSource.textContent + '</b> focos</p>' +
+			'<p>Tudo isso em <b>x</b> segundos!</p>' +
+			'<p>Consegue fazer ainda melhor? Compartilhe o jogo e desafie seus amigos!</p>' +
+			'<h3>Fique por dentro!</h3>' +
+			'<div id="stayTuned">' +
+				'<div class="facebook">' +
+					'<a href="http://facebook.com/minsaude" target="_blank"><img src="img/fb_icon.jpg" alt=""/></a>' +
+					'<p>Curta a página do <i>Ministério da Saúde</i> no Facebook</p>' +
+				'</div>' +
+				'<div class="website">' +
+					'<a href="http://combateaedes.saude.gov.br/" target="_blank"><img src="img/combatedengue.png" alt=""/></a>' +
+					'<p>Site oficial do Combate ao Mosquito</p>' +
+				'</div>' +
+				'<div class="disqueSaude">' +
+					'<img src="img/disquesaude.jpg" alt=""/>' +
+					'<p>Para mais informações sobre as doenças</p>' +
+				'</div>' +
+			'</div>',
+		confirmButtonText: "Jogar novamente",
+		allowEscapeKey: false,
+		allowOutsideClick: false,
+	}).then(function(isConfirm) {
+		if(isConfirm) {
+			resetGame();
+		}
+	});
+
+	document.getElementsByClassName('gameOverAlert')[0].scrollTop = 0;
+}
+
 function gameOver() {
 	var symptomsText;
 
@@ -426,7 +476,7 @@ function gameOver() {
 						'<p>Encha os pratinhos ou vasos de planta com areia até a borda.</p>' +
 					'</div>' +
 				'</div>' +
-				'<p>Se for guardar pneus velhos em casa, retire toda a água e mantenha-os em locais cobertos, protegidos da chuva. Não se esqueça também de não jogar lixo em terrenos baldios! Veja outras ações que você deve seguir para ajudar no combate <a href="http://www.saude.ba.gov.br/novoportal/index.php?option=com_content&view=article&id=9345%3Aacoes-para-eliminar-os-focos-do-mosquito-aedes-aegypt&catid=25%3Aorientacao-e-prevencao&Itemid=25" target="_blank">clicando aqui.</a></p>' +
+				'<p>Se for guardar pneus velhos em casa, retire toda a água e mantenha-os em locais cobertos, protegidos da chuva. Não se esqueça também de <b>não</b> jogar lixo em terrenos baldios! Veja outras ações que você deve seguir para ajudar no combate <a href="http://www.saude.ba.gov.br/novoportal/index.php?option=com_content&view=article&id=9345%3Aacoes-para-eliminar-os-focos-do-mosquito-aedes-aegypt&catid=25%3Aorientacao-e-prevencao&Itemid=25" target="_blank">clicando aqui.</a></p>' +
 				'<h3>Tratamento</h3>' +
 				'<p>Os sintomas da Dengue, Zika e Chikungunya podem ser parecidos, mas o tratamento é diferente para cada doença. Vá ao posto de saúde se estiver com os sintomas. <b>Evite a automedicação</b>.</p>' +
 				'<h3>Fique por dentro!</h3>' +
