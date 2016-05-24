@@ -57,6 +57,7 @@ function begin() {
 	// newSetInterval(updateGame, intervalFrequency);
 
 	currentDisease = Math.floor(random.get() * 3);
+	currentSymptom = 0;
 	nextLevel(currentLevel);
 }
 
@@ -141,6 +142,23 @@ function updateGame() {
 	}
 }
 
+function resetGame() {
+	currentLevel = 1;
+	currentDisease = Math.floor(random.get() * 3);
+	currentSymptom = 0;
+	symptomStatus.textContent = "Nenhum";
+	repellentQty.textContent = "x 0";
+
+	while(gameZone.children[0]) {
+		gameZone.removeChild(gameZone.children[0]);
+	}
+
+	scoreSource.textContent = "0";
+	scoreMosquitos.textContent = "0";
+
+	nextLevel(currentLevel);
+}
+
 function changeMosquitoFrequency(ms) {
 	var temp = mosquitoFrequency + ms;
 
@@ -167,8 +185,9 @@ function addRepellent() {
 	gameZone.appendChild(repellent);
 
 	setTimeout(function() {
-		repellent.parentNode.removeChild(repellent);
-	}, 1000);
+		if(repellent)
+			repellent.parentNode.removeChild(repellent);
+	}, 2500);
 }
 
 function increaseRepellent(r) {
@@ -189,7 +208,7 @@ function useRepellent() {
 
 		var allMosquitos = document.getElementsByClassName("aedes");
 		while(allMosquitos[0]) {
-			allMosquitos[0].parentNode.removeChild(allMosquitos[0]);
+			allMosquitos[0].click();
 		}
 
 		newSetInterval(updateGame, intervalFrequency);
@@ -202,7 +221,7 @@ function addTrash() {
 
 	var trash = document.createElement('div');
 	trash.setAttribute('class', 'trash ' + typesTrash[whichTrash]);
-	trash.setAttribute('life', 10);
+	trash.setAttribute('life', 5);
 	trash.setAttribute('type', whichTrash);
 	trash.setAttribute('onclick', 'destroyTrash(this)');
 	trash.style.left = left;
@@ -428,6 +447,10 @@ function gameOver() {
 		confirmButtonText: "Jogar novamente",
 		allowEscapeKey: false,
 		allowOutsideClick: false,
+	}).then(function(isConfirm) {
+		if(isConfirm) {
+			resetGame();
+		}
 	});
 
 	document.getElementsByClassName('gameOverAlert')[0].scrollTop = 0;
