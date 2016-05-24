@@ -27,6 +27,8 @@ var repellentProbability = 0.10;
 var amountOfTrash = 0;
 var currentLevel = 1;
 
+var duration;
+
 // var typesTrash = ['tire', 'vaseRed', 'vaseYellow', 'garbage', 'waterTank'];
 var typesTrash = ['tire', 'vaseRed', 'vaseYellow'];
 
@@ -58,6 +60,7 @@ function begin() {
 
 	currentDisease = Math.floor(random.get() * 3);
 	currentSymptom = 0;
+	duration = new Date().getTime() / 1000;
 	nextLevel(currentLevel);
 }
 
@@ -156,6 +159,7 @@ function resetGame() {
 	scoreSource.textContent = "0";
 	scoreMosquitos.textContent = "0";
 
+	duration = new Date().getTime() / 1000;
 	nextLevel(currentLevel);
 }
 
@@ -185,7 +189,7 @@ function addRepellent() {
 	gameZone.appendChild(repellent);
 
 	setTimeout(function() {
-		if(repellent)
+		if(repellent.parentNode)
 			repellent.parentNode.removeChild(repellent);
 	}, 2500);
 }
@@ -388,6 +392,12 @@ function continueGame() {
 }
 
 function victoryGameOver() {
+	var currentTime = new Date().getTime() / 1000;
+	duration = currentTime - duration;
+
+	var minutes = Math.floor(duration / 60);
+	var seconds = Math.floor(duration % 60);
+
 	swal({
 		title: "PARABÉNS",
 		customClass: 'gameOverAlert',
@@ -408,7 +418,7 @@ function victoryGameOver() {
 			'<h3>Sua pontuação</h3>' +
 			'<p>Você mantou <b>' + scoreMosquitos.textContent + '</b> mosquitos</p>' +
 			'<p>e destruiu <b>' + scoreSource.textContent + '</b> focos</p>' +
-			'<p>Tudo isso em <b>x</b> segundos!</p>' +
+			'<p>Tudo isso em <b>' + minutes + 'm' + seconds + 's</b>!</p>' +
 			'<p>Consegue fazer ainda melhor? Compartilhe o jogo e desafie seus amigos!</p>' +
 			'<h3>Fique por dentro!</h3>' +
 			'<div id="stayTuned">' +
