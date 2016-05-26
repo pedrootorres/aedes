@@ -152,7 +152,9 @@ function nextLevel (lvl) {
 		text: "3",
 		timer: 3000,
 		width: 200,
-		showConfirmButton: false
+		showConfirmButton: false,
+		allowEscapeKey: false,
+		allowOutsideClick: false
 	}).then(function() {
 		stopGame = false;
 		mainInterval = setInterval(updateGame, 20);
@@ -567,7 +569,7 @@ function gameOver() {
 }
 
 function changeWeapon(w) {
-	weapon = parseInt(w.getAttribute("type"));
+	weapon = parseInt(w);
 
 	if(weapon == 0) {
 		gameZone.style.cursor = "url(http://cur.cursors-4u.net/toons/too-9/too908.png), auto";
@@ -606,3 +608,18 @@ function newSetInterval(callback, duration, callbackArguments) {
 		newSetInterval.apply(scope, args);
 	}, duration);
 }
+
+window.addEventListener("keydown", function(e){
+	if(e.keyCode == 49) {
+		changeWeapon(0);
+	} else if(e.keyCode == 50) {
+		changeWeapon(1);
+	} else if(e.keyCode == 51) {
+		changeWeapon(2);
+	} else if(e.keyCode == 52) {
+		changeWeapon(3);
+	} else if(e.keyCode == 82) {
+		useRepellent();
+	}
+	console.log(e.keyCode);
+});
