@@ -505,21 +505,19 @@ function victoryGameOver() {
 }
 
 function shareOnFacebook(scoreMosquitos, scoreSource, minutes, seconds) {
-	var meta = document.createElement("meta");
-	meta.setAttribute("property", "og:title");
-	meta.setAttribute("content", 'Eu matei ' + scoreMosquitos + ' mosquitos e destruí ' + scoreSource + 
-			' focos em ' + minutes + ' minuto e ' + seconds + ' segundos. Você consegue fazer melhor?');
-	document.getElementsByTagName("head")[0].appendChild(meta);
-
-	meta = document.createElement("meta");
-	meta.setAttribute("property", "og:description");
-	meta.setAttribute("content", 'Eu consegui vencer a batalha contra o mosquito Aedes aegypti!');
-	document.getElementsByTagName("head")[0].appendChild(meta);
-
 	FB.ui({
-		method: 'share',
-		href: 'https://rawgit.com/pedrootorres/aedes/master/index.html',
-		hashtag: "#ZikaZero"
+		method: 'share_open_graph',
+  		action_type: 'og.likes',
+  		action_properties: JSON.stringify({
+	  			object: {
+	  				"og:title" : 'Eu matei ' + scoreMosquitos + ' mosquitos e destruí ' + scoreSource + 
+			' focos em ' + minutes + ' minutos e ' + seconds + ' segundos. Você consegue fazer melhor?',
+	  				"og:description" : "isso eh um teste legal",
+	  				"og:image:url" : "https://rawgit.com/pedrootorres/aedes/master/img/mosquitos/mosquitos_mosquito_0.png"
+	  			}
+  		}),
+  		href: 'https://rawgit.com/pedrootorres/aedes/master/index.html',
+		hashtag: "#ZikaZero",
 	}, function(response){});
 }
 
