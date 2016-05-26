@@ -106,10 +106,14 @@ var weapon = 0;
 
 
 function begin() {
-	currentDisease = Math.floor(random.get() * 3);
-	currentSymptom = 0;
-	duration = new Date().getTime() / 1000;
-	nextLevel(currentLevel);
+	FB.ui({
+		method: 'share',
+		href: 'https://developers.facebook.com/docs/',
+	}, function(response){});
+	// currentDisease = Math.floor(random.get() * 3);
+	// currentSymptom = 0;
+	// duration = new Date().getTime() / 1000;
+	// nextLevel(currentLevel);
 }
 
 function nextLevel (lvl) {
@@ -262,7 +266,7 @@ function useRepellent() {
 		clearInterval(mainInterval);
 
 		var allMosquitos = document.getElementsByClassName("aedes");
-		while(allMosquitos.length > 0) {
+		while(allMosquitos.length != 0) {
 			allMosquitos[0].click();
 		}
 
@@ -621,5 +625,4 @@ window.addEventListener("keydown", function(e){
 	} else if(e.keyCode == 82) {
 		useRepellent();
 	}
-	console.log(e.keyCode);
 });
