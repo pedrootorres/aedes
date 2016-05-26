@@ -102,52 +102,9 @@ body {
 	color: white;
 }
 
-.nada {
-	font-size: 2em;
-}
-
-.dengue {
-	padding-top: 10px;
-	font-size: 1.5em;
-}
-
-.zika {
-	font-size: 2em;
-}
-
-.chikungunya {
-	padding-top: 20px;
-	font-size: 0.9em;
-}
-
 #gameZone {
 	width: 100%;
 	height: 100%;
-}
-
-#start {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	margin-left: -200px;
-	margin-top: -125px;
-	width: 400px;
-	height: 250px;	
-	text-align: center;
-	background-color: rgba(0, 0, 0, 0.7);
-	color: white;
-	font-size: 1em;
-	z-index: 10;
-	border-radius: 5%;
-}
-
-#start h1 {
-	color: yellow;
-	font-size: 2em;
-}
-
-#startButton {
-	visibility: hidden;
 }
 
 .weaponsInstructions {
@@ -157,7 +114,6 @@ body {
 .racketImage {
 	float: left;
 	width: 100px;
-	/*margin-right: 50px;*/
 }
 
 .racketImage img {
@@ -166,36 +122,6 @@ body {
 
 .repellentIcon {
 	width: 60px;
-}
-
-.gameOverAlert {
-	margin-left: 500px;
-	text-align: justify;
-	background-size: black;
-}
-
-#over {
-	visibility: visible;
-	padding-left: 15px;
-	padding-right: 15px;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	margin-left: -350px;
-	margin-top: -250px;
-	width: 700px;
-	height: 500px;
-	text-align: justify;
-	background-color: rgba(255, 255, 255, 1);
-	font-size: 1em;
-	z-index: 10;
-	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-	border-radius: 6px;
-}
-
-#over h1 {
-	text-align: center;
-	font-size: 2em;
 }
 
 #symptomsList {
@@ -259,56 +185,6 @@ body {
 	width: 100px;
 }
 
-#fadeCurtains {
-	position: absolute;
-	background-color: rgba(51, 51, 51, 0.44);
-	width: 100%;
-	height: 100%;
-	z-index: 3;
-}
-
-#threeTwoOne {
-	visibility: hidden;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	margin-left: -100px;
-	margin-top: -75px;
-	width: 200px;
-	height: 150px;
-	text-align: center;
-	background-color: rgba(0, 0, 0, 0.7);
-	color: white;
-	font-size: 1em;
-	z-index: 10;
-}
-
-#threeTwoOne h1 {
-	color: yellow;
-	font-size: 2em;
-}
-
-#warning {
-	visibility: hidden;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	margin-left: -200px;
-	margin-top: -125px;
-	width: 400px;
-	height: 250px;
-	text-align: center;
-	background-color: rgba(0, 0, 0, 0.7);
-	color: white;
-	font-size: 1em;
-	z-index: 10;
-}
-
-#warning h1 {
-	color: yellow;
-	font-size: 2em;
-}
-
 #person {
 	background-image: url("../img/person.png");
 	background-size: 100%;
@@ -360,30 +236,6 @@ body {
 	position: absolute;
 }
 
-.clock {
-	background: url("http://worldartsme.com/images/alarm-clock-free-clipart-1.jpg") no-repeat;
-	background-size: 100%;
-	width: 35px;
-	height: 32px;
-	position: absolute;
-}
-
-#blackCurtains {
-	visibility: hidden;
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	z-index: 9;
-}
-
 @media only screen and (max-width: 400px) {
-	#start {
-		width: 310px;
-		margin-left: -155px;
-	}
-
-	#over {
-		width: 310px;
-		margin-left: -155px;
-	}
+	
 }
