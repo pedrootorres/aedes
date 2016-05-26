@@ -106,14 +106,10 @@ var weapon = 0;
 
 
 function begin() {
-	FB.ui({
-		method: 'share',
-		href: 'https://developers.facebook.com/docs/',
-	}, function(response){});
-	// currentDisease = Math.floor(random.get() * 3);
-	// currentSymptom = 0;
-	// duration = new Date().getTime() / 1000;
-	// nextLevel(currentLevel);
+	currentDisease = Math.floor(random.get() * 3);
+	currentSymptom = 0;
+	duration = new Date().getTime() / 1000;
+	nextLevel(currentLevel);
 }
 
 function nextLevel (lvl) {
@@ -480,6 +476,7 @@ function victoryGameOver() {
 			'<p>e destruiu <b>' + scoreSource.textContent + '</b> focos</p>' +
 			'<p>Tudo isso em <b>' + minutes + 'm' + seconds + 's</b>!</p>' +
 			'<p>Consegue fazer ainda melhor? Compartilhe o jogo e desafie seus amigos!</p>' +
+			'<a href="#" onclick="shareOnFacebook('+scoreMosquitos.textContent+','+scoreSource.textContent+','+minutes+','+seconds+')">Compartilhe</a>' +
 			'<h3>Fique por dentro!</h3>' +
 			'<div id="stayTuned">' +
 				'<div class="facebook">' +
@@ -505,6 +502,25 @@ function victoryGameOver() {
 	});
 
 	document.getElementsByClassName('gameOverAlert')[0].scrollTop = 0;
+}
+
+function shareOnFacebook(scoreMosquitos, scoreSource, minutes, seconds) {
+	var meta = document.createElement("meta");
+	meta.setAttribute("property", "og:title");
+	meta.setAttribute("content", 'Eu matei ' + scoreMosquitos + ' mosquitos e destruí ' + scoreSource + 
+			' focos em ' + minutes + ' minuto e ' + seconds + ' segundos. Você consegue fazer melhor?');
+	document.getElementsByTagName("head")[0].appendChild(meta);
+
+	meta = document.createElement("meta");
+	meta.setAttribute("property", "og:description");
+	meta.setAttribute("content", 'Eu consegui vencer a batalha contra o mosquito Aedes aegypti!');
+	document.getElementsByTagName("head")[0].appendChild(meta);
+
+	FB.ui({
+		method: 'share',
+		href: 'https://rawgit.com/pedrootorres/aedes/master/index.html',
+		hashtag: "#ZikaZero"
+	}, function(response){});
 }
 
 function gameOver() {
