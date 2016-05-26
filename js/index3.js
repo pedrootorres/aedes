@@ -1,5 +1,63 @@
 window.onload = function() {
-	document.getElementById("startButton").style.visibility = 'visible';
+	// document.getElementById("startButton").style.visibility = 'visible';
+
+	swal({
+		title: "#ZikaZero",
+		customClass: "startSwal",
+		allowEscapeKey: false,
+		allowOutsideClick: false,
+		text: "Você está pronto para começar o combate contra o mosquito <i>Aedes aegypti</i>? Não vai ficar doente, hein? Clique em <b><i>Jogar</i></b> para começar ou em <b><i>Instruções</i></b> para aprender os controles!",
+		showCancelButton: true,
+		confirmButtonText: "Jogar",
+		cancelButtonText: "Instruções"
+	}).then(function(isConfirm) {
+		if(isConfirm) {
+			begin();
+		} else {
+			swal({
+				title: "Instruções",
+				customClass: "instructionsSwal",
+				allowEscapeKey: false,
+				allowOutsideClick: false,
+				confirmButtonText: "Jogar",
+				type: "question",
+				html:
+					'<div>' +
+						'<h3>Objetivo:</h3>' +
+						'<p>Seu objetivo é vencer o combate contra o <i>Aedes aegypti</i> e para isso você deve lembrar que não adianta apenas matar o mosquito! Você precisa <b>destruir todos os focos</b> para evitar que ele nasça. São 5 fases: destrua todos os focos para passar para a próxima fase mas, ao mesmo tempo, não deixe que o mosquito te pique. Você só tem 4 chances! Quanto mais rápido você conseguir, melhor!</p>' +
+						'<h3>Controles:</h3>' +
+						'<p>Cada arma tem a sua função. Selecione ela para destruir um foco específico</p>' +
+						'<div class="weaponsInstructions">' +
+							'<div class="racketImage">' +
+								'<img src="img/racket_small_icon.png" alt=""/>' +
+								'<p>Use a raquete para matar os mosquitos</p>' +
+							'</div>' +
+							'<div class="racketImage">' +
+								'<img src="img/broom.png" alt=""/>' +
+								'<p>Use a vassoura para limpar o lixo</p>' +
+							'</div>' +
+							'<div class="racketImage">' +
+								'<img src="img/shovel.png" alt=""/>' +
+								'<p>Use a pá para colocar areia no vaso de planta</p>' +
+							'</div>' +
+							'<div class="racketImage">' +
+								'<img src="img/hand.png" alt=""/>' +
+								'<p>Para fechar caixas d\'água e tirar água dos pneus</p>' +
+							'</div>' +
+						'</div>' +
+						'<h3>Arma especial:</h3>' +
+						'<p>Sua arma especial é o <b>repelente</b>. Ele pode aparecer na tela por poucos segundos. Seja rápido e colete ele. Para usá-lo selecione-o nas suas armas. O repelente mata todos os mosquitos que existem na tela! Mas seja sábio na hora de usar ele.</p>' +
+						'<img class="repellentIcon" src="img/repellent.png" alt="" />' +
+					'</div>'
+			}).then(function(isConfirm) {
+				begin();
+			});
+
+			document.getElementsByClassName('instructionsSwal')[0].scrollTop = 0;
+		}
+	});
+	
+	document.getElementsByClassName('startSwal')[0].scrollTop = 0;
 };
 
 var gameZone = document.getElementById("gameZone");
@@ -52,12 +110,6 @@ var weapon = 0;
 
 
 function begin() {
-	document.getElementById("start").style.visibility = "hidden";
-	document.getElementById("startButton").style.visibility = 'hidden';
-
-	// mainInterval = setInterval(updateGame, 20);
-	// newSetInterval(updateGame, intervalFrequency);
-
 	currentDisease = Math.floor(random.get() * 3);
 	currentSymptom = 0;
 	duration = new Date().getTime() / 1000;
