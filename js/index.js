@@ -476,7 +476,7 @@ function victoryGameOver() {
 			'<p>e destruiu <b>' + scoreSource.textContent + '</b> focos</p>' +
 			'<p>Tudo isso em <b>' + minutes + 'm' + seconds + 's</b>!</p>' +
 			'<p>Consegue fazer ainda melhor? Compartilhe o jogo e desafie seus amigos!</p>' +
-			'<a href="#" onclick="shareOnFacebook('+scoreMosquitos.textContent+','+scoreSource.textContent+','+minutes+','+seconds+')">Compartilhe</a>' +
+			'<div class="shareFacebook"><img class="fbWhite" src="img/fb_white.png" alt="" /><a href="#" onclick="shareOnFacebook('+scoreMosquitos.textContent+','+scoreSource.textContent+','+minutes+','+seconds+')">Compartilhe</a></div>' +
 			'<h3>Fique por dentro!</h3>' +
 			'<div id="stayTuned">' +
 				'<div class="facebook">' +
@@ -505,23 +505,36 @@ function victoryGameOver() {
 }
 
 function shareOnFacebook(scoreMosquitos, scoreSource, minutes, seconds) {
+	var ttl;
+	var dscrptn = "Eu me juntei ao combate contra o Aedes aegypti e estou fazendo" +
+					" minha parte destruindo os focos do mosquito! Ajude você também!";
+	if(currentLevel == 6) {
+		ttl = 'Eu matei ' + scoreMosquitos + ' mosquitos, destruí ' + scoreSource + 
+			' e zerei o jogo! Quero ver você conseguir também!';
+	} else {
+		ttl = "Eu matei " + scoreMosquitos + " mosquitos, destruí " + scoreSource +
+			" focos e cheguei na fase " + currentLevel + " antes de pegar " +
+			diseasesAndSymptoms[currentDisease][0] + ". Consegue fazer melhor?";
+	}
+
 	FB.ui({
-		method: 'share_open_graph',
-  		action_type: 'og.likes',
-  		action_properties: JSON.stringify({
-	  			object: {
-	  				"og:title" : 'Eu matei ' + scoreMosquitos + ' mosquitos e destruí ' + scoreSource + 
-			' focos em ' + minutes + ' minutos e ' + seconds + ' segundos. Você consegue fazer melhor?',
-	  				"og:description" : "isso eh um teste legal",
-	  				"og:image:url" : "https://rawgit.com/pedrootorres/aedes/master/img/mosquitos/mosquitos_mosquito_0.png"
-	  			}
-  		}),
+		method: 'share',
+		title: ttl,
+		description: dscrptn,
+		picture: "https://rawgit.com/pedrootorres/aedes/master/img/mosquitos/mosquitos_mosquito_0.png",	
   		href: 'https://rawgit.com/pedrootorres/aedes/master/index.html',
 		hashtag: "#ZikaZero",
+		caption: "bit.ly/ZIKAZERO",
 	}, function(response){});
 }
 
 function gameOver() {
+	var currentTime = new Date().getTime() / 1000;
+	duration = currentTime - duration;
+
+	var minutes = Math.floor(duration / 60);
+	var seconds = Math.floor(duration % 60);
+
 	var symptomsText;
 
 	if(currentDisease == 0) {
@@ -543,6 +556,8 @@ function gameOver() {
 			'</ul>' +
 				'<p>Provavelmente você está com <b>' + diseasesAndSymptoms[currentDisease][0].toUpperCase() + '</b>! ' +
 				symptomsText +
+				'<p>Consegue fazer melhor? Compartilhe o jogo e desafie seus amigos!</p>' +
+				'<div class="shareFacebook"><img class="fbWhite" src="img/fb_white.png" alt="" /><a href="#" onclick="shareOnFacebook('+scoreMosquitos.textContent+','+scoreSource.textContent+','+minutes+','+seconds+')">Compartilhe</a></div>' +
 				'<p>Saiba mais sobre essa e outras doenças transmitidas pelo mosquito <i>Aedes aegypti</i> <a href="http://combateaedes.saude.gov.br/sintomas" target="_blank">clicando aqui</a></p>' +
 				'<h3>Como se prevenir</h3>' +
 				'<p>Não adianta apenas matar o mosquito; Você não pode deixar ele nascer. E isso depende de todos! Ações simples podem acabar com os focos. Faça a sua parte!</p>' +

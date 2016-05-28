@@ -152,6 +152,29 @@ body {
 	width: 150px;
 }
 
+.shareFacebook {
+	background-color: #3765a3;
+	padding: 20px;
+	position: relative;
+}
+
+.fbWhite {
+	width: 30px;
+	position: absolute;
+	top: 5;
+	left: 160px;
+}
+
+.shareFacebook a {
+	position: absolute;
+	color: white;
+	text-decoration: none;
+	width: 100%;
+	height: 100%;
+	top: 10;
+	left: 10;
+}
+
 #stayTuned {
 	display: inline-block;
 }
