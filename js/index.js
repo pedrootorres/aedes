@@ -510,7 +510,7 @@ function shareOnFacebook(scoreMosquitos, scoreSource, minutes, seconds) {
 					" minha parte destruindo os focos do mosquito! Ajude você também!";
 	if(currentLevel == 6) {
 		ttl = 'Eu matei ' + scoreMosquitos + ' mosquitos, destruí ' + scoreSource + 
-			' e zerei o jogo! Quero ver você conseguir também!';
+			' focos e zerei o jogo! Quero ver você conseguir também!';
 	} else {
 		ttl = "Eu matei " + scoreMosquitos + " mosquitos, destruí " + scoreSource +
 			" focos e cheguei na fase " + currentLevel + " antes de pegar " +
