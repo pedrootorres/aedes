@@ -159,6 +159,7 @@ function nextLevel (lvl) {
 		allowOutsideClick: false
 	}).then(function() {
 		stopGame = false;
+		gameZone.style.cursor = "url('img/racket_mouse.png') 25 25, auto";
 		mainInterval = setInterval(updateGame, 20);
 	});
 
