@@ -678,6 +678,20 @@ function pauseGame() {
 	document.getElementById("pauseIcon").textContent = "\u25ba";
 	pause = true;
 	clearInterval(mainInterval);
+
+	swal ({
+		title: "Jogo em pausa",
+		html: "<p>Ideia e desenvolvimento por: <b>Pedro Torres</b></p>" +
+			'<p>Images: <b>Bruno Soares</b></p>' +
+			'Projeto em código aberto no <a style="text-decoration:none" href="https://github.com/pedrootorres/aedes">GitHub <img src="img/github-icon.png" width="20px" alt="" /></a>',
+		allowEscapeKey: false,
+		allowOutsideClick: false,
+		confirmButtonText: "Continuar"
+	}).then(function(isConfirm) {
+		if(isConfirm) {
+			unpauseGame();
+		}
+	});
 }
 
 function unpauseGame() {
