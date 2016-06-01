@@ -140,6 +140,7 @@ function nextLevel (lvl) {
 		amountOfTrash = 18;		
 	} else {
 		victoryGameOver();
+		return;
 	}
 
 	for(var i = 0; i < amountOfTrash; i++) {
