@@ -70,6 +70,7 @@ var random = new randomNumber();
 var mainInterval;
 
 var stopGame = false;
+var pause = false;
 
 var frame;
 var trashFrequency;
@@ -398,12 +399,15 @@ function addMosquito() {
 function fly(mosquito, speed, me) {
 	var left = parseInt(mosquito.style.left);
 	left += speed;
-	mosquito.style.left = left;
 
-	if(left > personLeft) {
-		collision(me);
-	} else if(stopGame) {
-		me.stopFlying();
+	if(!pause) {
+		mosquito.style.left = left;
+
+		if(left > personLeft) {
+			collision(me);
+		} else if(stopGame) {
+			me.stopFlying();
+		}
 	}
 }
 
@@ -667,5 +671,16 @@ window.addEventListener("keydown", function(e){
 	} else if(e.keyCode == 53) {
 		useRepellent();
 	}
-	console.log(e.keyCode);
 });
+
+function pauseGame() {
+	document.getElementById("pauseIcon").textContent = "\u25ba";
+	pause = true;
+	clearInterval(mainInterval);
+}
+
+function unpauseGame() {
+	document.getElementById("pauseIcon").textContent = "\u2590\u00a0\u258c";
+	pause = false;
+	mainInterval = setInterval(updateGame, 20);
+}
