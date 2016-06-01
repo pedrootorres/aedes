@@ -224,12 +224,31 @@ body {
 }
 
 .aedes {
-	background-image: url("../img/mosquitos/mosquitos_mosquito_0.png");
 	background-size: 100%;
 	width: 100px;
 	height: 100px;
 	position: absolute;
 	z-index: 3;
+}
+
+.veryFast {
+	background-image: url("../img/mosquitos/mosquitos_mosquito_5.png");
+}
+
+.fast {
+	background-image: url("../img/mosquitos/mosquitos_mosquito_6.png");
+}
+
+.normal {
+	background-image: url("../img/mosquitos/mosquitos_mosquito_3.png");
+}
+
+.slow {
+	background-image: url("../img/mosquitos/mosquitos_mosquito_0.png");
+}
+
+.verySlow {
+	background-image: url("../img/mosquitos/mosquitos_mosquito_1.png");
 }
 
 .tire {
@@ -255,6 +274,15 @@ body {
 	background-size: 100%;
 	width: 100px;
 	height: 101px;
+	position: absolute;
+	margin-top: 0px;
+}
+
+.garbage {
+	background: url("../img/garbage.png") no-repeat;
+	background-size: 100%;
+	width: 200px;
+	height: 100px;
 	position: absolute;
 	margin-top: 0px;
 }

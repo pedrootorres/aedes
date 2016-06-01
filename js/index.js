@@ -84,7 +84,7 @@ var currentLevel = 1;
 var duration;
 
 // var typesTrash = ['tire', 'vaseRed', 'vaseYellow', 'garbage', 'waterTank'];
-var typesTrash = ['tire', 'vaseRed', 'vaseYellow'];
+var typesTrash = ['tire', 'vaseRed', 'vaseYellow', 'garbage'];
 
 var diseasesAndSymptoms = [
 							['Dengue', 'Febre alta', 'Dor de cabeça', 'Dor no corpo'],
@@ -343,7 +343,6 @@ function addMosquito() {
 	var x = Math.floor(random.get() * (window.innerHeight-200 - 200) + 200);
 
 	this.mosquito = document.createElement('div');
-	this.mosquito.setAttribute('class', 'aedes');
 	this.mosquito.style.top = x;
 	this.mosquito.style.left = -100;
 
@@ -354,14 +353,19 @@ function addMosquito() {
 
 	if(probs < 0.05) {
 		this.speed = 8;
+		this.mosquito.setAttribute('class', 'aedes veryFast');
 	} else if(probs < 0.15) {
 		this.speed = 6;
+		this.mosquito.setAttribute('class', 'aedes fast');
 	} else if(probs < 0.40) {
 		this.speed = 1;
+		this.mosquito.setAttribute('class', 'aedes verySlow');
 	} else if(probs < 0.80) {
 		this.speed = 3;
+		this.mosquito.setAttribute('class', 'aedes slow');
 	} else if(probs < 1) {
-		this.speed = 4	
+		this.speed = 4;
+		this.mosquito.setAttribute('class', 'aedes normal');
 	}
 
 	this.flyInterval;
@@ -612,7 +616,7 @@ function changeWeapon(w) {
 	} else if(weapon == 2) {
 		gameZone.style.cursor = "url('img/shovel_mouse.png') 25 25, auto";
 	} else {
-		gameZone.style.cursor = "url('img/hand2_mouse.png') 25 25, auto";
+		gameZone.style.cursor = "url('img/hand_mouse.png') 25 25, auto";
 	}
 }
 
