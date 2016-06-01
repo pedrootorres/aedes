@@ -58,22 +58,33 @@ body {
 	border-radius: 50%;
 	width: 70px;
 	height: 70px;
+	float: left;
 }
 
 #racket {
 	border: 5px solid #0066CC;
+	background-image: url("../img/rackets/rackets_racket_icon.png");
+	background-size: 100%;
 }
 
 #broom {
 	border: 5px solid #73AD21;
+	background-image: url("../img/broom/broom_broom-1.png");
+	background-position: 10;
+	background-size: 55%;
+	background-repeat: no-repeat;
 }
 
 #shovel {
 	border: 5px solid #FF9933;
+	background-image: url("../img/shovel.png");
+	background-size: 100%;
 }
 
 #hand {
-	border: 5px solid #FFFF00;	
+	border: 5px solid #FFFF00;
+	background-image: url("../img/hand.png");
+	background-size: 100%;
 }
 
 #specialWeapon {
@@ -118,11 +129,22 @@ body {
 .racketImage {
 	float: left;
 	width: 100px;
+	margin-left: 20px;
 }
 
 .racketImage img {
 	width: 100px;
-	margin-right: 20px;
+}
+
+.broomImage {
+	float: left;
+	width: 100px;
+}
+
+.broomImage img {
+	width: 70px;
+	margin-top: -10px;
+	margin-bottom: -20px;
 }
 
 .repellentIcon {

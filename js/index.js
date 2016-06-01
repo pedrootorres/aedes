@@ -30,8 +30,8 @@ window.onload = function() {
 								'<img src="img/racket_small_icon.png" alt=""/>' +
 								'<p>Use a raquete para matar os mosquitos. <b>Tecla de atalho: 1</b></p>' +
 							'</div>' +
-							'<div class="racketImage">' +
-								'<img src="img/broom.png" alt=""/>' +
+							'<div class="broomImage">' +
+								'<img src="img/broom/broom_broom-1.png" alt=""/>' +
 								'<p>Use a vassoura para limpar o lixo. <b>Tecla de atalho: 2</b></p>' +
 							'</div>' +
 							'<div class="racketImage">' +
@@ -44,7 +44,7 @@ window.onload = function() {
 							'</div>' +
 						'</div>' +
 						'<h3>Arma especial:</h3>' +
-						'<p>Sua arma especial é o <b>repelente</b>. Ele pode aparecer na tela por poucos segundos. Seja rápido e colete ele. Para usá-lo selecione-o nas suas armas. O repelente mata todos os mosquitos que existem na tela! Mas seja sábio na hora de usar ele. <b>Tecla de atalho: R</b></p>' +
+						'<p>Sua arma especial é o <b>repelente</b>. Ele pode aparecer na tela por poucos segundos. Seja rápido e colete ele. Para usá-lo selecione-o nas suas armas. O repelente mata todos os mosquitos que existem na tela! Mas seja sábio na hora de usar ele. <b>Tecla de atalho: 5</b></p>' +
 						'<img class="repellentIcon" src="img/spray/spray_spray_0.png" alt="" />' +
 					'</div>'
 			}).then(function(isConfirm) {
@@ -290,12 +290,20 @@ function addTrash() {
 	}, 25);
 }
 
+var changeAnimation = true;
 function destroyTrash (t) {
 	var rightWeapon = false;
 
 	if(weapon == 1) {
 		if(t.getAttribute('type') == 3) {
 			rightWeapon = true;
+			if(changeAnimation) {
+				gameZone.style.cursor = "url('img/broom/broom_mouse_click-1.png') 25 50, auto";
+				changeAnimation = !changeAnimation;
+			} else {
+				gameZone.style.cursor = "url('img/broom/broom_mouse_click-2.png') 25 50, auto";
+				changeAnimation = !changeAnimation;
+			}
 		}
 	} else if(weapon == 2) {
 		if(t.getAttribute('type') == 1 || t.getAttribute('type') == 2) {
@@ -612,7 +620,7 @@ function changeWeapon(w) {
 	if(weapon == 0) {
 		gameZone.style.cursor = "url('img/racket_mouse.png') 25 25, auto"
 	} else if(weapon == 1) {
-		gameZone.style.cursor = "url('img/broom_mouse.png') 50 50, auto";
+		gameZone.style.cursor = "url('img/broom/broom_mouse-1.png') 25 50, auto";
 	} else if(weapon == 2) {
 		gameZone.style.cursor = "url('img/shovel_mouse.png') 25 25, auto";
 	} else {
@@ -656,7 +664,8 @@ window.addEventListener("keydown", function(e){
 		changeWeapon(2);
 	} else if(e.keyCode == 52) {
 		changeWeapon(3);
-	} else if(e.keyCode == 82) {
+	} else if(e.keyCode == 53) {
 		useRepellent();
 	}
+	console.log(e.keyCode);
 });
