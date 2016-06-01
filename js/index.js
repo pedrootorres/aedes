@@ -606,13 +606,13 @@ function changeWeapon(w) {
 	weapon = parseInt(w);
 
 	if(weapon == 0) {
-		gameZone.style.cursor = "url(http://cur.cursors-4u.net/toons/too-9/too908.png), auto";
+		gameZone.style.cursor = "url('img/racket_mouse.png'), auto"
 	} else if(weapon == 1) {
-
+		gameZone.style.cursor = "url('img/broom_mouse.png'), auto";
 	} else if(weapon == 2) {
-
+		gameZone.style.cursor = "url('img/shovel_mouse.png'), auto";
 	} else {
-
+		gameZone.style.cursor = "url('img/hand_mouse.png'), auto";
 	}
 }
 
