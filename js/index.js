@@ -28,24 +28,24 @@ window.onload = function() {
 						'<div class="weaponsInstructions">' +
 							'<div class="racketImage">' +
 								'<img src="img/racket_small_icon.png" alt=""/>' +
-								'<p>Use a raquete para matar os mosquitos</p>' +
+								'<p>Use a raquete para matar os mosquitos. <b>Tecla de atalho: 1</b></p>' +
 							'</div>' +
 							'<div class="racketImage">' +
 								'<img src="img/broom.png" alt=""/>' +
-								'<p>Use a vassoura para limpar o lixo</p>' +
+								'<p>Use a vassoura para limpar o lixo. <b>Tecla de atalho: 2</b></p>' +
 							'</div>' +
 							'<div class="racketImage">' +
 								'<img src="img/shovel.png" alt=""/>' +
-								'<p>Use a pá para colocar areia no vaso de planta</p>' +
+								'<p>Use a pá para colocar areia no vaso de planta. <b>Tecla de atalho: 3</b></p>' +
 							'</div>' +
 							'<div class="racketImage">' +
 								'<img src="img/hand.png" alt=""/>' +
-								'<p>Para fechar caixas d\'água e tirar água dos pneus</p>' +
+								'<p>A mão fecha caixas d\'água e tirar água dos pneus. <b>Tecla de atalho: 4</b></p>' +
 							'</div>' +
 						'</div>' +
 						'<h3>Arma especial:</h3>' +
-						'<p>Sua arma especial é o <b>repelente</b>. Ele pode aparecer na tela por poucos segundos. Seja rápido e colete ele. Para usá-lo selecione-o nas suas armas. O repelente mata todos os mosquitos que existem na tela! Mas seja sábio na hora de usar ele.</p>' +
-						'<img class="repellentIcon" src="img/repellent.png" alt="" />' +
+						'<p>Sua arma especial é o <b>repelente</b>. Ele pode aparecer na tela por poucos segundos. Seja rápido e colete ele. Para usá-lo selecione-o nas suas armas. O repelente mata todos os mosquitos que existem na tela! Mas seja sábio na hora de usar ele. <b>Tecla de atalho: R</b></p>' +
+						'<img class="repellentIcon" src="img/spray/spray_spray_0.png" alt="" />' +
 					'</div>'
 			}).then(function(isConfirm) {
 				begin();
@@ -233,7 +233,7 @@ function addRepellent() {
 
 	var repellent = document.createElement("img");
 	repellent.setAttribute('class', 'repellent');
-	repellent.setAttribute('src', 'img/repellent.png');
+	repellent.setAttribute('src', 'img/spray/spray_spray_1.png');
 	repellent.setAttribute('onclick', 'increaseRepellent(this)');
 	repellent.style.top = x;
 	repellent.style.left = y;
@@ -606,13 +606,13 @@ function changeWeapon(w) {
 	weapon = parseInt(w);
 
 	if(weapon == 0) {
-		gameZone.style.cursor = "url('img/racket_mouse.png'), auto"
+		gameZone.style.cursor = "url('img/racket_mouse.png') 25 25, auto"
 	} else if(weapon == 1) {
-		gameZone.style.cursor = "url('img/broom_mouse.png'), auto";
+		gameZone.style.cursor = "url('img/broom_mouse.png') 50 50, auto";
 	} else if(weapon == 2) {
-		gameZone.style.cursor = "url('img/shovel_mouse.png'), auto";
+		gameZone.style.cursor = "url('img/shovel_mouse.png') 25 25, auto";
 	} else {
-		gameZone.style.cursor = "url('img/hand_mouse.png'), auto";
+		gameZone.style.cursor = "url('img/hand2_mouse.png') 25 25, auto";
 	}
 }
 
