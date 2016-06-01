@@ -1,56 +1,109 @@
-html {
-	height: 100%;
-}
-
 body {
-	/*background: url("http://cache.clickcamboriu.com.br/2015/02/dom-jaime.jpg") no-repeat center center fixed;*/
-	background: url("http://s006.radikal.ru/i215/1010/ec/c29bf435b98b.jpg") no-repeat bottom fixed;
+	background: url("../img/game_background.jpg") no-repeat bottom fixed;
 	background-size: 1500px;
 	height: auto;
-	font-family: Verdana, Geneva, sans-serif;
+	font-family: Open sans, Helvetica Neue, sans-serif;
 	margin: 0;
+	padding: 0;
 }
 
 #topMenu {
-	background-color: blue;
-	position: relative;
+	position: absolute;
+	width: 100%;
+	z-index: 2;
 }
 
 #counter {
-	text-align: center;
-	background-color: red;
-	width: 130px;
+	text-align: left;
+	background-color: rgba(0, 0, 0, 0.4);
+	box-shadow: -1px 1px black;
+	color: white;
+	width: 17%;
 	height: 150px;
-	position: absolute;
+	float: left;
+}
+
+#counter p {
+	padding-left: 5px;
+}
+
+.scoreDiv {
+	padding-left: 5px;
+}
+
+.scoreDiv h1 {
+	display: inline;
+	margin-right: 5px;
+}
+
+.scoreDiv p {
+	display: inline;
+}
+
+#weapons {
+	display: inline-block;
+	background-color: rgba(0, 0, 0, 0.4);
+	box-shadow: -1px 1px black;
+	color: white;
+	height: 150px;
+	width: 65%;
+}
+
+#weapons p {
+	padding-left: 5px;
+}
+
+.weapon {
+	margin-left: 20px;
+	border-radius: 50%;
+	width: 70px;
+	height: 70px;
+}
+
+#racket {
+	border: 5px solid #0066CC;
+}
+
+#broom {
+	border: 5px solid #73AD21;
+}
+
+#shovel {
+	border: 5px solid #FF9933;
+}
+
+#hand {
+	border: 5px solid #FFFF00;	
+}
+
+#specialWeapon {
+	float: right;
+	margin-right: 20px;
+	margin-top: -10px;
+	padding-top: 10px;
+}
+
+#specialWeapon > p {
+	float: right;
+	margin-top: -10px;
+}
+
+#repellent {
+	border: 5px solid gray;
 }
 
 #status {
 	float: right;
 	text-align: center;
-	padding-right: 10px;
-	padding-top: 0px;
-	padding-left: 10px;
-	width: 130px;
+	width: 18%;
 	height: 150px;
-	background-color: green;
+	background-color: rgba(0, 0, 0, 0.4);
+	box-shadow: -1px 1px black;
+	color: white;
 }
 
-.nada {
-	font-size: 2em;
-}
-
-.dengue {
-	padding-top: 10px;
+#symptom {
 	font-size: 1.5em;
-}
-
-.zika {
-	font-size: 2em;
-}
-
-.chikungunya {
-	padding-top: 20px;
-	font-size: 0.9em;
 }
 
 #gameZone {
@@ -58,55 +111,144 @@ body {
 	height: 100%;
 }
 
-#start {
+.weaponsInstructions {
+	display: inline-block;
+}
+
+.racketImage {
+	float: left;
+	width: 100px;
+}
+
+.racketImage img {
+	width: 100px;
+	margin-right: 20px;
+}
+
+.repellentIcon {
+	width: 100px;
+}
+
+#symptomsList {
+	list-style-type: none;
+	padding: 0;
+}
+
+#prevention {
+	display: inline-block;
+}
+
+.waterTankImage {
+	float: left;
+	width: 150px;
+	margin-right: 50px;
+}
+
+.waterTankImage img {
+	width: 150px;
+}
+
+.vaseImage {
+	float: left;
+	width: 150px;
+}
+
+.vaseImage img {
+	width: 150px;
+}
+
+.shareFacebook {
+	background-color: #3765a3;
+	padding: 20px;
+	position: relative;
+}
+
+.fbWhite {
+	width: 30px;
 	position: absolute;
-	top: 50%;
-	left: 50%;
-	margin-left: -200px;
-	margin-top: -125px;
-	width: 400px;
-	height: 250px;	
-	text-align: center;
-	background-color: rgba(0, 0, 0, 0.7);
-	color: white;
-	font-size: 1em;
-	z-index: 10;
+	top: 5;
+	left: 160px;
 }
 
-#start h1 {
-	color: yellow;
-	font-size: 2em;
-}
-
-#over {
-	visibility: hidden;
+.shareFacebook a {
 	position: absolute;
-	top: 50%;
-	left: 50%;
-	margin-left: -200px;
-	margin-top: -125px;
-	width: 400px;
-	height: 250px;
-	text-align: center;
-	background-color: rgba(0, 0, 0, 0.7);
 	color: white;
-	font-size: 1em;
-	z-index: 10;
+	text-decoration: none;
+	width: 100%;
+	height: 100%;
+	top: 10;
+	left: 10;
 }
 
-#over h1 {
-	color: yellow;
-	font-size: 2em;
+#stayTuned {
+	display: inline-block;
+}
+
+.facebook {
+	float: left;
+	width: 120px;
+	margin-right: 20px;
+}
+
+.facebook img {
+	width: 80px;
+}
+
+.website {
+	float: left;
+	width: 120px;
+	margin-right: 20px;
+}
+
+.website img {
+	width: 92px;
+}
+
+.disqueSaude {
+	float: left;
+	width: 120px;
+}
+
+.disqueSaude img {
+	width: 100px;
+}
+
+#person {
+	background-image: url("../img/person.png");
+	background-size: 100%;
+	width: 170px;
+	height: 480px;
+	right: 80px;
+	bottom: 48px;
+	position: absolute;
 }
 
 .aedes {
-	/*background-image: url("http://4.bp.blogspot.com/-922U1dBfps4/TpvrXSLrLKI/AAAAAAAABys/iKL9Vx5M1xE/s1600/nyamuk2.gif");*/
-	background-image: url("../img/mosquitos/mosquitos_mosquito_0.png");
 	background-size: 100%;
 	width: 100px;
 	height: 100px;
 	position: absolute;
 	z-index: 3;
+}
+
+.veryFast {
+	background-image: url("../img/mosquitos/mosquitos_mosquito_5.png");
+}
+
+.fast {
+	background-image: url("../img/mosquitos/mosquitos_mosquito_6.png");
+}
+
+.normal {
+	background-image: url("../img/mosquitos/mosquitos_mosquito_3.png");
+}
+
+.slow {
+	background-image: url("../img/mosquitos/mosquitos_mosquito_0.png");
+}
+
+.verySlow {
+	background-image: url("../img/mosquitos/mosquitos_mosquito_1.png");
 }
 
 .tire {
@@ -118,38 +260,38 @@ body {
 	margin-top: 0px;
 }
 
-.lifeBar {
-	height: 5px;
-	width: 100%;
-	margin-top: -10px;
-	background-color: green;
-	visibility: hidden;
-}
-
-.clock {
-	background: url("http://worldartsme.com/images/alarm-clock-free-clipart-1.jpg") no-repeat;
+.vaseRed {
+	background: url("../img/vases/vases_vase_1.png") no-repeat;
 	background-size: 100%;
-	width: 35px;
-	height: 32px;
+	width: 100px;
+	height: 101px;
 	position: absolute;
+	margin-top: 0px;
 }
 
-#blackCurtains {
-	visibility: hidden;
+.vaseYellow {
+	background: url("../img/vases/vases_vase_4.png") no-repeat;
+	background-size: 100%;
+	width: 100px;
+	height: 101px;
 	position: absolute;
-	width: 100%;
-	height: 100%;
-	z-index: 9;
+	margin-top: 0px;
+}
+
+.garbage {
+	background: url("../img/garbage.png") no-repeat;
+	background-size: 100%;
+	width: 200px;
+	height: 100px;
+	position: absolute;
+	margin-top: 0px;
+}
+
+.repellent {
+	width: 80px;
+	position: absolute;
 }
 
 @media only screen and (max-width: 400px) {
-	#start {
-		width: 310px;
-		margin-left: -155px;
-	}
-
-	#over {
-		width: 310px;
-		margin-left: -155px;
-	}
+	
 }

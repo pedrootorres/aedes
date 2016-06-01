@@ -3,40 +3,59 @@
 		<title>#ZikaZero</title>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="css/index.css">
+		<link rel="stylesheet" type="text/css" href="css/sweetalert2.min.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
 	</head>
 
 	<body>
+		<script>
+		  window.fbAsyncInit = function() {
+		    FB.init({
+		      appId      : '265838920437627',
+		      xfbml      : true,
+		      version    : 'v2.6'
+		    });
+		  };
+
+		  (function(d, s, id){
+		     var js, fjs = d.getElementsByTagName(s)[0];
+		     if (d.getElementById(id)) {return;}
+		     js = d.createElement(s); js.id = id;
+		     js.src = "https://connect.facebook.net/en_US/sdk.js";
+		     fjs.parentNode.insertBefore(js, fjs);
+		   }(document, 'script', 'facebook-jssdk'));
+		</script>
+
 		<div id="topMenu">
 			<div id="counter">
-				<p>Você matou</p>
-				<h1 id="score">0</h1>
-				<p>mosquitos!</p>
+				<p>Você destruiu:</p>
+				<div class="scoreDiv"><h1 id="scoreMosquitos">0</h1><p>mosquitos</p></div>
+				<div class="scoreDiv"><h1 id="scoreSource">0</h1><p>focos</p></div>
+			</div>
+
+			<div id="weapons">
+				<p>Suas armas:</p>
+				<img type="0" onclick="changeWeapon(0)" src="img/rackets/rackets_racket_icon.png" alt="racket" id="racket" class="weapon">
+				<img type="1" onclick="changeWeapon(1)" src="img/broom.png" alt="" id="broom" class="weapon">
+				<img type="2" onclick="changeWeapon(2)" src="img/shovel.png" alt="" class="weapon" id="shovel">
+				<img type="3" onclick="changeWeapon(3)" src="img/hand.png" alt="" class="weapon" id="hand">
+				<div id="specialWeapon">
+					<p id="repellentQty">x 0</p>
+					<img onclick="useRepellent()" src="img/spray/spray_spray_0.png" alt="repellent" class="weapon" id="repellent">
+				</div>
 			</div>
 
 			<div id="status">
-				<p>Você está com:</p>
-				<h1 id="disease" class="nada">NADA</h1>
+				<p>Sintoma:</p>
+				<h3 id="symptom">Nenhum</h3>
 			</div>
 		</div>
 
-		<div id="blackCurtains"></div>
-
-		<div id="start">
-			<h1>#ZikaZero</h1>
-			<p>Você está pronto para combater o mosquito Aedes Aegypti e se livrar de todas as doenças causadas por ele, como Dengue, Zika e Chikungunya? Aperte o play e comece essa batalha!</p>
-			<button onclick="begin()">Começar o jogo!</button>
-		</div>
-
-		<div id="over">
-			<h1>GAME OVER</h1>
-			<p>Você não conseguiu suportar todas essas doenças e morreu! Mas pelo menos você conseguiu matar todos esses mosquitos:</p>
-			<h2 id="finalScore">0</h2>
-			<button onclick="restart()">Jogar de novo!</button>
-		</div>
+		<div id="person"></div>
 
 		<div id="gameZone"></div>
 	</body>
 
 	<script type="text/javascript" src="js/index.js"></script>
+	<script src="js/sweetalert2.min.js"></script>
 </html>
