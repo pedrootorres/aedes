@@ -683,14 +683,10 @@ function pauseGame() {
 		title: "Jogo em pausa",
 		html: "<p>Ideia e desenvolvimento por: <b>Pedro Torres</b></p>" +
 			'<p>Images: <b>Bruno Soares</b></p>' +
-			'Projeto em código aberto no <a style="text-decoration:none" href="https://github.com/pedrootorres/aedes">GitHub <img src="img/github-icon.png" width="20px" alt="" /></a>',
-		allowEscapeKey: false,
-		allowOutsideClick: false,
+			'Projeto em código aberto no <a style="text-decoration:none" target="_blank" href="https://github.com/pedrootorres/aedes">GitHub <img src="img/github-icon.png" width="20px" alt="" /></a>',
 		confirmButtonText: "Continuar"
 	}).then(function(isConfirm) {
-		if(isConfirm) {
-			unpauseGame();
-		}
+		unpauseGame();
 	});
 }
 
