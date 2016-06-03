@@ -64,6 +64,7 @@ var scoreSource = document.getElementById("scoreSource");
 var repellentQty = document.getElementById("repellentQty");
 var personLeft = document.getElementById("person").getBoundingClientRect().left;
 var symptomStatus = document.getElementById("symptom");
+var allMosquitos = document.getElementsByClassName("aedes");
 
 var random = new randomNumber();
 
@@ -257,6 +258,7 @@ function increaseRepellent(r) {
 }
 
 function useRepellent() {
+	changeWeapon(0);
 	var qty = parseInt(repellentQty.textContent.substring(1));
 	
 	if(qty > 0) {
@@ -264,8 +266,7 @@ function useRepellent() {
 		repellentQty.textContent = "x " + qty;
 		clearInterval(mainInterval);
 
-		var allMosquitos = document.getElementsByClassName("aedes");
-		while(allMosquitos.length != 0) {
+		while(allMosquitos[0]) {
 			allMosquitos[0].click();
 		}
 
@@ -341,7 +342,6 @@ function endCurrentLevel() {
 	stopGame = true;
 	clearInterval(mainInterval);
 
-	var allMosquitos = document.getElementsByClassName("aedes");
 	while(allMosquitos[0]) {
 		allMosquitos[0].parentNode.removeChild(allMosquitos[0]);
 	}
