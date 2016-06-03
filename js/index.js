@@ -75,7 +75,7 @@ var pause = false;
 var frame;
 var trashFrequency;
 var mosquitoFrequency;
-var intervalFrequency = 20;
+var intervalFrequency = 100;
 
 var repellentProbability = 0.10;
 
@@ -115,27 +115,27 @@ function begin() {
 
 function nextLevel (lvl) {
 	if(lvl == 1) {
-		frame = 0;
+		frame = -500;
 		trashFrequency = 6000;
 		mosquitoFrequency = 2000;
 		amountOfTrash = 5;		
 	} else if(lvl == 2) {
-		frame = 0;
+		frame = -500;
 		trashFrequency = 5500;
 		mosquitoFrequency = 1900;
 		amountOfTrash = 8;		
 	} else if(lvl == 3) {
-		frame = 0;
+		frame = -500;
 		trashFrequency = 5000;
 		mosquitoFrequency = 1900;
 		amountOfTrash = 12;		
 	} else if(lvl == 4) {
-		frame = 0;
+		frame = -500;
 		trashFrequency = 4500;
 		mosquitoFrequency = 1700;
 		amountOfTrash = 16;		
 	} else if(lvl == 5) {
-		frame = 0;
+		frame = -500;
 		trashFrequency = 4500;
 		mosquitoFrequency = 1500;
 		amountOfTrash = 18;		
@@ -160,7 +160,7 @@ function nextLevel (lvl) {
 	}).then(function() {
 		stopGame = false;
 		gameZone.style.cursor = "url('img/racket_mouse.png') 25 25, auto";
-		mainInterval = setInterval(updateGame, 20);
+		mainInterval = setInterval(updateGame, intervalFrequency);
 	});
 
 	var countdown = 3;
@@ -175,14 +175,14 @@ function nextLevel (lvl) {
 }
 
 function updateGame() {
-	if(frame % trashFrequency == 0 && frame > 0) {
+	if(frame % trashFrequency == 0) {
 		addTrash();
 		amountOfTrash++;
 
 		changeMosquitoFrequency(-100);
 	}
 
-	if(frame % mosquitoFrequency == 0 && frame > 0) {
+	if(frame % mosquitoFrequency == 0) {
 		var m = new addMosquito();
 		m.fly();
 
@@ -222,7 +222,7 @@ function changeMosquitoFrequency(ms) {
 
 	if(temp < 500) {
 		mosquitoFrequency = 500;
-	} else if(temp > 2000 ) {
+	} else if(temp > 2000) {
 		mosquitoFrequency = 2000;
 	} else {
 		mosquitoFrequency = temp;
@@ -269,7 +269,7 @@ function useRepellent() {
 			allMosquitos[0].click();
 		}
 
-		newSetInterval(updateGame, intervalFrequency);
+		mainInterval = setInterval(updateGame, intervalFrequency);
 	}
 }
 
@@ -356,8 +356,6 @@ function addMosquito() {
 	this.mosquito.style.top = x;
 	this.mosquito.style.left = -100;
 
-	gameZone.appendChild(this.mosquito);
-
 	var probs = random.get();
 	this.speed;
 
@@ -377,6 +375,8 @@ function addMosquito() {
 		this.speed = 4;
 		this.mosquito.setAttribute('class', 'aedes normal');
 	}
+
+	gameZone.appendChild(this.mosquito);
 
 	this.flyInterval;
 
@@ -651,15 +651,6 @@ function randomNumber() {
 	}
 }
 
-function newSetInterval(callback, duration, callbackArguments) {
-	callback.apply(this, callbackArguments);
-	var args = arguments, scope = this;
-
-	mainInterval = setTimeout(function() {
-		newSetInterval.apply(scope, args);
-	}, duration);
-}
-
 window.addEventListener("keydown", function(e){
 	if(e.keyCode == 49) {
 		changeWeapon(0);
@@ -693,5 +684,5 @@ function pauseGame() {
 function unpauseGame() {
 	document.getElementById("pauseIcon").textContent = "\u2590\u00a0\u258c";
 	pause = false;
-	mainInterval = setInterval(updateGame, 20);
+	mainInterval = setInterval(updateGame, intervalFrequency);
 }
