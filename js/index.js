@@ -238,8 +238,8 @@ function addRepellent() {
 	repellent.setAttribute('class', 'repellent');
 	repellent.setAttribute('src', 'img/spray/spray_spray_1.png');
 	repellent.setAttribute('onclick', 'increaseRepellent(this)');
-	repellent.style.top = x;
-	repellent.style.left = y;
+	repellent.style.top = x + "";
+	repellent.style.left = y + "";
 
 	gameZone.appendChild(repellent);
 
@@ -252,14 +252,14 @@ function addRepellent() {
 function increaseRepellent(r) {
 	r.parentNode.removeChild(r);
 
-	var qty = parseInt(repellentQty.textContent.substring(1));
+	var qty = parseInt(repellentQty.textContent.substring(1), 10);
 	qty++;
 	repellentQty.textContent = "x " + qty;
 }
 
 function useRepellent() {
 	changeWeapon(0);
-	var qty = parseInt(repellentQty.textContent.substring(1));
+	var qty = parseInt(repellentQty.textContent.substring(1), 10);
 	
 	if(qty > 0) {
 		qty--;
@@ -283,8 +283,8 @@ function addTrash() {
 	trash.setAttribute('life', 5);
 	trash.setAttribute('type', whichTrash);
 	trash.setAttribute('onclick', 'destroyTrash(this)');
-	trash.style.left = left;
-	trash.style.bottom = random.get() * (1000-900) + 900;
+	trash.style.left = left + "";
+	trash.style.bottom = (random.get() * (1000-900) + 900) + "";
 
 	gameZone.appendChild(trash);
 
@@ -319,13 +319,13 @@ function destroyTrash (t) {
 	}
 
 	if(rightWeapon) {
-		var life = parseInt(t.getAttribute('life'));
+		var life = parseInt(t.getAttribute('life'), 10);
 		life--;
 
 		if(life < 0) {
 			t.parentNode.removeChild(t);
 			amountOfTrash--;
-			scoreSource.textContent = parseInt(scoreSource.textContent) + 1;
+			scoreSource.textContent = parseInt(scoreSource.textContent, 10) + 1;
 
 			if(amountOfTrash == 0) {
 				endCurrentLevel();
@@ -349,15 +349,18 @@ function endCurrentLevel() {
 	nextLevel(++currentLevel);
 }
 
+/**
+ * @constructor
+ */
 function addMosquito() {
 	var x = Math.floor(random.get() * (window.innerHeight-200 - 200) + 200);
 
 	this.mosquito = document.createElement('div');
-	this.mosquito.style.top = x;
-	this.mosquito.style.left = -100;
+	this.mosquito.style.top = x + "";
+	this.mosquito.style.left = -100 + "";
 
 	var probs = random.get();
-	this.speed;
+	this.speed = 0;
 
 	if(probs < 0.05) {
 		this.speed = 8;
@@ -378,7 +381,7 @@ function addMosquito() {
 
 	gameZone.appendChild(this.mosquito);
 
-	this.flyInterval;
+	this.flyInterval = 0;
 
 	this.fly = function() {
 		var mosquito = this.mosquito;
@@ -398,7 +401,7 @@ function addMosquito() {
 }
 
 function fly(mosquito, speed, me) {
-	var left = parseInt(mosquito.style.left);
+	var left = parseInt(mosquito.style.left, 10);
 	left += speed;
 
 	if(!pause) {
@@ -425,7 +428,7 @@ function killMosquito(me) {
 		me.mosquito.parentNode.removeChild(me.mosquito);
 		me.stopFlying();
 
-		value = parseInt(scoreMosquitos.textContent);
+		value = parseInt(scoreMosquitos.textContent, 10);
 		value++;
 
 		scoreMosquitos.textContent = value;
@@ -620,7 +623,7 @@ function gameOver() {
 }
 
 function changeWeapon(w) {
-	weapon = parseInt(w);
+	weapon = parseInt(w, 10);
 
 	if(weapon == 0) {
 		gameZone.style.cursor = "url('img/racket_mouse.png') 25 25, auto"
@@ -634,7 +637,7 @@ function changeWeapon(w) {
 }
 
 function gravity(obj, inter) {
-	var y = parseInt(obj.style.bottom);
+	var y = parseInt(obj.style.bottom, 10);
 	y-=8;
 	obj.style.bottom = y;
 	if(y < 48) {
@@ -642,6 +645,9 @@ function gravity(obj, inter) {
 	}
 }
 
+/**
+ * @constructor
+ */
 function randomNumber() {
 	this.last = Date.now() % 100;
 
