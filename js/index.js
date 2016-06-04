@@ -317,6 +317,22 @@ function destroyTrash (t) {
 	} else if(weapon == 2) {
 		if(t.getAttribute('type') == 1 || t.getAttribute('type') == 2) {
 			rightWeapon = true;
+
+			var l = parseInt(t.getAttribute('life'), 10); - 1;
+			
+			if(t.getAttribute('type') == 1) {
+				if(l == 5) {
+					t.style.backgroundPosition = '-85px 0px';
+				} else if(l == 4) {
+					t.style.backgroundPosition = '-170px 0px';
+				} else if(l == 3) {
+					t.style.backgroundPosition = '-255px 0px';
+				} else if(l == 2) {
+					t.style.backgroundPosition = '-340px 0px';
+				}
+			} else {
+				
+			}
 		}
 	} else if(weapon == 3) {
 		if(t.getAttribute('type') == 0 || t.getAttribute('type') == 4) {
@@ -328,7 +344,7 @@ function destroyTrash (t) {
 		var life = parseInt(t.getAttribute('life'), 10);
 		life--;
 
-		if(life < 0) {
+		if(life < 1) {
 			t.parentNode.removeChild(t);
 			amountOfTrash--;
 			scoreSource.textContent = parseInt(scoreSource.textContent, 10) + 1;

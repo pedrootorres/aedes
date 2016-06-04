@@ -5,11 +5,17 @@ body {
 	font-family: Open sans, Helvetica Neue, sans-serif;
 	margin: 0;
 	padding: 0;
+	min-width: 843px;
+}
+
+#usedImages {
+	margin-top: -1000px;
 }
 
 #topMenu {
 	position: absolute;
 	width: 100%;
+	min-width: 843px;
 	z-index: 2;
 }
 
@@ -119,6 +125,7 @@ body {
 
 #gameZone {
 	width: 100%;
+	min-width: 843px;
 	height: 100%;
 }
 
@@ -291,10 +298,11 @@ body {
 }
 
 .vaseRed {
-	background: url("../img/vases/vases_vase_1.png") no-repeat;
-	background-size: 100%;
-	width: 100px;
-	height: 101px;
+	background-image: url("../img/vases/vase_red.png");
+	background-repeat: no-repeat;
+	background-size: 800% 100%;
+	width: 65px;
+	height: 105px;
 	position: absolute;
 	margin-top: 0px;
 }
