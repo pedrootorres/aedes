@@ -108,6 +108,7 @@ var racket = document.getElementById("racket");
 var broom = document.getElementById("broom");
 var shovel = document.getElementById("shovel");
 var hand = document.getElementById("hand");
+racket.style.backgroundColor = "#77a532";
 var selectedWeapon = racket;
 
 
@@ -632,23 +633,23 @@ function changeWeapon(w) {
 
 	if(weapon == 0) {
 		gameZone.style.cursor = "url('img/racket_mouse.png') 25 25, auto"
-		selectedWeapon.classList.remove('selectedWeapon');
-		racket.classList.add('selectedWeapon');
+		selectedWeapon.style.backgroundColor = "";
+		racket.style.backgroundColor = "#77a532";
 		selectedWeapon = racket;
 	} else if(weapon == 1) {
 		gameZone.style.cursor = "url('img/broom/broom_mouse-1.png') 25 50, auto";
-		selectedWeapon.classList.remove('selectedWeapon');
-		broom.classList.add('selectedWeapon');
+		selectedWeapon.style.backgroundColor = "";
+		broom.style.backgroundColor = "#3333FF";
 		selectedWeapon = broom;
 	} else if(weapon == 2) {
 		gameZone.style.cursor = "url('img/shovel_mouse.png') 25 25, auto";
-		selectedWeapon.classList.remove('selectedWeapon');
-		shovel.classList.add('selectedWeapon');
+		selectedWeapon.style.backgroundColor = "";
+		shovel.style.backgroundColor = "#FFCC00";
 		selectedWeapon = shovel;
 	} else {
 		gameZone.style.cursor = "url('img/hand_mouse.png') 25 25, auto";
-		selectedWeapon.classList.remove('selectedWeapon');
-		hand.classList.add('selectedWeapon');
+		selectedWeapon.style.backgroundColor = "";
+		hand.style.backgroundColor = "#CC0000";
 		selectedWeapon = hand;
 	}
 }

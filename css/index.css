@@ -61,18 +61,14 @@ body {
 	float: left;
 }
 
-.selectedWeapon {
-	background-color: white;
-} 
-
 #racket {
-	border: 5px solid #0066CC;
+	border: 5px solid #77a532;
 	background-image: url("../img/rackets/rackets_racket_icon.png");
 	background-size: 100%;
 }
 
 #broom {
-	border: 5px solid #73AD21;
+	border: 5px solid #3333FF;
 	background-image: url("../img/broom/broom_broom-1.png");
 	background-position: 10;
 	background-size: 55%;
@@ -80,13 +76,13 @@ body {
 }
 
 #shovel {
-	border: 5px solid #FF9933;
+	border: 5px solid #FFCC00;
 	background-image: url("../img/shovel.png");
 	background-size: 100%;
 }
 
 #hand {
-	border: 5px solid #FFFF00;
+	border: 5px solid #CC0000;
 	background-image: url("../img/hand.png");
 	background-size: 100%;
 }
