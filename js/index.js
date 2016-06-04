@@ -104,6 +104,11 @@ var currentSymptom;
 * 3 = hand
 */
 var weapon = 0;
+var racket = document.getElementById("racket");
+var broom = document.getElementById("broom");
+var shovel = document.getElementById("shovel");
+var hand = document.getElementById("hand");
+var selectedWeapon = racket;
 
 
 
@@ -581,7 +586,7 @@ function gameOver() {
 				'<div class="shareFacebook"><img class="fbWhite" src="img/fb_white.png" alt="" /><a href="#" onclick="shareOnFacebook('+scoreMosquitos.textContent+','+scoreSource.textContent+','+minutes+','+seconds+')">Compartilhe</a></div>' +
 				'<p>Saiba mais sobre essa e outras doenças transmitidas pelo mosquito <i>Aedes aegypti</i> <a href="http://combateaedes.saude.gov.br/sintomas" target="_blank">clicando aqui</a></p>' +
 				'<h3>Como se prevenir</h3>' +
-				'<p>Não adianta apenas matar o mosquito; Você não pode deixar ele nascer. E isso depende de todos! Ações simples podem acabar com os focos. Faça a sua parte!</p>' +
+				'<p>Não adianta apenas matar o mosquito; Você não pode deixar ele nascer. E isso depende de todos! Ações simples podem acabar com os focos. Faça a sua parte e converse com seus vizinhos para que eles também ajudem no combate!</p>' +
 				'<div id="prevention">' +
 					'<div class="waterTankImage">' +
 						'<img src="img/water_tank_icon.png" alt=""/>' +
@@ -627,12 +632,24 @@ function changeWeapon(w) {
 
 	if(weapon == 0) {
 		gameZone.style.cursor = "url('img/racket_mouse.png') 25 25, auto"
+		selectedWeapon.classList.remove('selectedWeapon');
+		racket.classList.add('selectedWeapon');
+		selectedWeapon = racket;
 	} else if(weapon == 1) {
 		gameZone.style.cursor = "url('img/broom/broom_mouse-1.png') 25 50, auto";
+		selectedWeapon.classList.remove('selectedWeapon');
+		broom.classList.add('selectedWeapon');
+		selectedWeapon = broom;
 	} else if(weapon == 2) {
 		gameZone.style.cursor = "url('img/shovel_mouse.png') 25 25, auto";
+		selectedWeapon.classList.remove('selectedWeapon');
+		shovel.classList.add('selectedWeapon');
+		selectedWeapon = shovel;
 	} else {
 		gameZone.style.cursor = "url('img/hand_mouse.png') 25 25, auto";
+		selectedWeapon.classList.remove('selectedWeapon');
+		hand.classList.add('selectedWeapon');
+		selectedWeapon = hand;
 	}
 }
 

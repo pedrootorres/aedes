@@ -61,6 +61,10 @@ body {
 	float: left;
 }
 
+.selectedWeapon {
+	background-color: white;
+} 
+
 #racket {
 	border: 5px solid #0066CC;
 	background-image: url("../img/rackets/rackets_racket_icon.png");
