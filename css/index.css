@@ -136,7 +136,7 @@ body {
 .racketImage {
 	float: left;
 	width: 100px;
-	margin-left: 20px;
+	margin-left: 15px;
 }
 
 .racketImage img {
@@ -308,10 +308,10 @@ body {
 }
 
 .vaseYellow {
-	background: url("../img/vases/vases_vase_4.png") no-repeat;
-	background-size: 100%;
-	width: 100px;
-	height: 101px;
+	background: url("../img/vases/vase_yellow.png") no-repeat;
+	background-size: 800% 100%;
+	width: 65px;
+	height: 105px;
 	position: absolute;
 	margin-top: 0px;
 }

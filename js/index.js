@@ -40,7 +40,7 @@ window.onload = function() {
 							'</div>' +
 							'<div class="racketImage">' +
 								'<img src="img/hand.png" alt=""/>' +
-								'<p>A mão fecha caixas d\'água e tirar água dos pneus. <b>Tecla de atalho: 4</b></p>' +
+								'<p>A mão fecha caixas d\'água e tira água dos pneus. <b>Tecla de atalho: 4</b></p>' +
 							'</div>' +
 						'</div>' +
 						'<h3>Arma especial:</h3>' +
@@ -320,18 +320,14 @@ function destroyTrash (t) {
 
 			var l = parseInt(t.getAttribute('life'), 10); - 1;
 			
-			if(t.getAttribute('type') == 1) {
-				if(l == 5) {
-					t.style.backgroundPosition = '-85px 0px';
-				} else if(l == 4) {
-					t.style.backgroundPosition = '-170px 0px';
-				} else if(l == 3) {
-					t.style.backgroundPosition = '-255px 0px';
-				} else if(l == 2) {
-					t.style.backgroundPosition = '-340px 0px';
-				}
-			} else {
-				
+			if(l == 5) {
+				t.style.backgroundPosition = '-85px 0px';
+			} else if(l == 4) {
+				t.style.backgroundPosition = '-170px 0px';
+			} else if(l == 3) {
+				t.style.backgroundPosition = '-255px 0px';
+			} else if(l == 2) {
+				t.style.backgroundPosition = '-340px 0px';
 			}
 		}
 	} else if(weapon == 3) {
