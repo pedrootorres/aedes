@@ -7,7 +7,7 @@
 ## Português
 
 ### Sobre
-Esse jogo foi desevolvido como parte do meu *Trabalho de Graduação*. O objetivo do trabalho é mostrar o poder que um jogo educativo tem como ferramenta de ensino. Em especial, a eficiência do jogo foi comparada com as propagandas de combate ao Aedes aegypti que o próprio Governo tem feito, e assim propondo que o jogo seja adicionado à campanha. O trabalho colabora com a sociedade em três aspectos principais:
+Esse jogo foi desenvolvido como parte do meu *Trabalho de Graduação*. O objetivo do trabalho é mostrar o poder que um jogo educativo tem como ferramenta de ensino. Em especial, a eficiência do jogo foi comparada com as propagandas de combate ao Aedes aegypti que o próprio Governo tem feito, e assim propondo que o jogo seja adicionado à campanha. O trabalho colabora com a sociedade em três aspectos principais:
  * Explicação da metodologia utilizada para a criação de um jogo educativo tendo como base propagandas e campanhas já existentes
  * O jogo em si, disponibilizado *open source*
  * O resultado da pesquisa e avaliação que mostra a eficiência do jogo, comprovando meu objetivo
