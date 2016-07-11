@@ -123,28 +123,28 @@ function begin() {
 function nextLevel (lvl) {
 	if(lvl == 1) {
 		frame = -500;
-		trashFrequency = 6000;
-		mosquitoFrequency = 2000;
+		trashFrequency = 8000;
+		mosquitoFrequency = 6000;
 		amountOfTrash = 5;		
 	} else if(lvl == 2) {
 		frame = -500;
-		trashFrequency = 5500;
-		mosquitoFrequency = 1900;
+		trashFrequency = 7000;
+		mosquitoFrequency = 5000;
 		amountOfTrash = 8;		
 	} else if(lvl == 3) {
 		frame = -500;
-		trashFrequency = 5000;
-		mosquitoFrequency = 1900;
+		trashFrequency = 6000;
+		mosquitoFrequency = 4000;
 		amountOfTrash = 12;		
 	} else if(lvl == 4) {
 		frame = -500;
-		trashFrequency = 4500;
-		mosquitoFrequency = 1700;
+		trashFrequency = 5000;
+		mosquitoFrequency = 3000;
 		amountOfTrash = 16;		
 	} else if(lvl == 5) {
 		frame = -500;
-		trashFrequency = 4500;
-		mosquitoFrequency = 1500;
+		trashFrequency = 5000;
+		mosquitoFrequency = 2000;
 		amountOfTrash = 18;		
 	} else {
 		victoryGameOver();
@@ -166,7 +166,7 @@ function nextLevel (lvl) {
 		allowOutsideClick: false
 	}).then(function() {
 		stopGame = false;
-		gameZone.style.cursor = "url('img/racket_mouse.png') 25 25, auto";
+		changeWeapon(0);
 		mainInterval = setInterval(updateGame, intervalFrequency);
 	});
 
@@ -229,10 +229,6 @@ function changeMosquitoFrequency(ms) {
 
 	if(temp < 500) {
 		mosquitoFrequency = 500;
-	} else if(temp > 2000) {
-		mosquitoFrequency = 2000;
-	} else {
-		mosquitoFrequency = temp;
 	}
 }
 
