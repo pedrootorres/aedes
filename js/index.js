@@ -120,6 +120,7 @@ function begin() {
 	nextLevel(currentLevel);
 }
 
+// changing level
 function nextLevel (lvl) {
 	if(lvl == 1) {
 		frame = -500;
